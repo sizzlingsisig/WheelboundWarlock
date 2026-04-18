@@ -1,0 +1,130 @@
+head/heads/human/male_plump/spellcast.png
+	- Note: original head by Redshrike, plump version by ??
+	- Licenses:
+		- CC-BY-SA 3.0
+		- GPL 3.0
+	- Authors:
+		- Stephen Challener (Redshrike)
+		- ??
+	- Links:
+		- https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+		- https://opengameart.org/content/lpc-folk
+
+head/faces/male/neutral/spellcast.png
+	- Note: Original by Redshrike, Expressions by ElizaWy, mapped to all frames by JaidynReiman
+	- Licenses:
+		- OGA-BY 3.0
+	- Authors:
+		- JaidynReiman
+		- ElizaWy
+		- Stephen Challener (Redshrike)
+	- Links:
+		- https://github.com/ElizaWy/LPC/tree/main/Characters/Head
+		- https://opengameart.org/content/ulpc-expanded-expressions
+
+weapon/ranged/slingshot/foreground/spellcast/slingshot.png
+	- Licenses:
+		- OGA-BY 3.0+
+		- GPL 3.0
+		- CC-BY 4.0
+	- Authors:
+		- bluecarrot16
+	- Links:
+		- https://opengameart.org/content/lpc-more-weapons
+
+body/bodies/pregnant/spellcast.png
+	- Note: see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)
+	- Licenses:
+		- CC-BY-SA 3.0
+		- GPL 3.0
+	- Authors:
+		- bluecarrot16
+		- JaidynReiman
+		- Evert
+		- TheraHedwig
+		- MuffinElZangano
+		- Durrani
+		- Benjamin K. Smith (BenCreating)
+		- Pierre Vigier (pvigier)
+		- Eliza Wyatt (ElizaWy)
+		- Matthew Krohn (makrohn)
+		- Johannes Sjölund (wulax)
+		- Stephen Challener (Redshrike)
+	- Links:
+		- https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+		- https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+		- https://opengameart.org/content/lpc-ladies
+		- https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear
+		- https://opengameart.org/content/lpc-7-womens-shirts
+		- https://opengameart.org/content/lpc-jump-expanded
+		- https://gitlab.com/vagabondgame/lpc-characters
+		- https://opengameart.org/content/lpc-jump-expanded
+		- https://opengameart.org/content/lpc-male-jumping-animation-by-durrani
+		- https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle
+
+beards/mustache/basic/spellcast.png
+	- Note: Original by Nemisys, repositioning by JaidynReiman.
+	- Licenses:
+		- CC-BY-SA 3.0
+		- GPL 3.0
+	- Authors:
+		- JaidynReiman
+		- Carlo Enrico Victoria (Nemisys)
+	- Links:
+		- https://opengameart.org/content/lpc-brunet-mustache
+
+torso/clothes/sleeveless/tanktop/pregnant/spellcast/white.png
+	- Note: "pirate shirt" by MadMarcel, edited to all poses by makrohn, cleanup and re-drawing for pregnant base by ElizaWy, edits for v3 base by bluecarrot16
+	- Licenses:
+		- OGA-BY 3.0
+		- CC-BY-SA 3.0
+		- GPL 3.0
+	- Authors:
+		- bluecarrot16
+		- ElizaWy
+		- Matthew Krohn (makrohn)
+		- Marcel van de Steeg (MadMarcel)
+		- Stephen Challener (Redshrike)
+		- Johannes Sjölund (wulax)
+	- Links:
+		- https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle
+		- https://opengameart.org/content/lpc-7-womens-shirts
+		- https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear
+		- http://opengameart.org/content/lpc-clothing-updates
+
+legs/pants/pregnant/spellcast/black.png
+	- Note: original male pants by wulax; edited for female by Joe White; recolors by JaidynReiman; walkcycle adapted to pregnant base by ElizaWy; remaining animations, recolors and edits to v3 base by bluecarrot16
+	- Licenses:
+		- CC-BY-SA 3.0
+		- GPL 3.0
+	- Authors:
+		- bluecarrot16
+		- ElizaWy
+		- JaidynReiman
+		- Joe White
+		- Matthew Krohn (makrohn)
+		- Johannes Sjölund (wulax)
+		- Stephen Challener (Redshrike)
+	- Links:
+		- https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+		- https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+		- https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear
+		- http://opengameart.org/content/lpc-clothing-updates
+
+feet/sandals/thin/spellcast/black.png
+	- Note: edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman
+	- Licenses:
+		- OGA-BY 3.0
+		- CC-BY-SA 3.0
+		- GPL 2.0
+		- GPL 3.0
+	- Authors:
+		- Nila122
+		- JaidynReiman
+		- Matthew Krohn (makrohn)
+		- Johannes Sjölund (wulax)
+	- Links:
+		- https://opengameart.org/content/lpc-roman-armor
+		- http://opengameart.org/content/lpc-clothing-updates
+		- https://opengameart.org/content/lpc-expanded-socks-shoes
+

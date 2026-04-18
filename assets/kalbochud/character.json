@@ -1,0 +1,494 @@
+{
+  "version": 2,
+  "bodyType": "pregnant",
+  "selections": {
+    "head": {
+      "itemId": "heads_human_male_plump",
+      "subId": null,
+      "variant": "",
+      "recolor": "all.lpcr.lemon",
+      "name": "Human Male Plump (lpcr lemon)"
+    },
+    "expression": {
+      "itemId": "face_neutral",
+      "subId": null,
+      "variant": "",
+      "recolor": "all.lpcr.lemon",
+      "name": "Neutral (lpcr lemon)"
+    },
+    "weapon": {
+      "itemId": "weapon_ranged_slingshot",
+      "subId": null,
+      "variant": "slingshot",
+      "recolor": "",
+      "name": "Slingshot (slingshot)"
+    },
+    "body": {
+      "itemId": "body",
+      "subId": null,
+      "variant": "",
+      "recolor": "all.lpcr.lemon",
+      "name": "Body Color (lpcr lemon)"
+    },
+    "mustache": {
+      "itemId": "beards_mustache",
+      "subId": null,
+      "variant": "",
+      "recolor": "black",
+      "name": "Mustache (black)"
+    },
+    "clothes": {
+      "itemId": "torso_clothes_sleeveless_tanktop",
+      "subId": null,
+      "variant": "white",
+      "recolor": "",
+      "name": "Tanktop (white)"
+    },
+    "legs": {
+      "itemId": "legs_pregnantpants",
+      "subId": null,
+      "variant": "black",
+      "recolor": "",
+      "name": "Pregnancy pants (black)"
+    },
+    "shoes": {
+      "itemId": "feet_sandals",
+      "subId": null,
+      "variant": "black",
+      "recolor": "",
+      "name": "Sandals (black)"
+    }
+  },
+  "selectedAnimation": "spellcast",
+  "showTransparencyGrid": true,
+  "applyTransparencyMask": false,
+  "matchBodyColorEnabled": true,
+  "compactDisplay": false,
+  "enabledLicenses": {
+    "CC0": true,
+    "CC-BY-SA": true,
+    "CC-BY": true,
+    "OGA-BY": true,
+    "GPL": true
+  },
+  "enabledAnimations": {
+    "spellcast": false,
+    "thrust": false,
+    "walk": false,
+    "slash": false,
+    "shoot": false,
+    "hurt": false,
+    "climb": false,
+    "idle": false,
+    "jump": false,
+    "sit": false,
+    "emote": false,
+    "run": false,
+    "watering": false,
+    "combat": false,
+    "1h_slash": false,
+    "1h_backslash": false,
+    "1h_halfslash": false
+  },
+  "url": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/#sex=pregnant&head=Human_Male_Plump_all.lpcr.lemon&expression=Neutral_all.lpcr.lemon&weapon=Slingshot_slingshot&body=Body_Color_all.lpcr.lemon&mustache=Mustache_black&clothes=Tanktop_white&legs=Pregnancy_pants_black&shoes=Sandals_black",
+  "layers": [
+    {
+      "itemId": "weapon_ranged_slingshot",
+      "name": "Slingshot (slingshot)",
+      "variant": "slingshot",
+      "recolors": null,
+      "zPos": 9,
+      "layerNum": 2,
+      "yPos": 512,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "weapon/ranged/slingshot/background/walk/slingshot.png",
+      "supportedAnimations": [
+        "walk",
+        "shoot",
+        "hurt"
+      ]
+    },
+    {
+      "itemId": "body",
+      "name": "Body Color (lpcr lemon)",
+      "variant": "",
+      "recolors": {
+        "body": "all.lpcr.lemon"
+      },
+      "zPos": 10,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "body/bodies/pregnant/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "feet_sandals",
+      "name": "Sandals (black)",
+      "variant": "black",
+      "recolors": null,
+      "zPos": 15,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "feet/sandals/thin/spellcast/black.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "legs_pregnantpants",
+      "name": "Pregnancy pants (black)",
+      "variant": "black",
+      "recolors": null,
+      "zPos": 20,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "legs/pants/pregnant/spellcast/black.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt"
+      ]
+    },
+    {
+      "itemId": "torso_clothes_sleeveless_tanktop",
+      "name": "Tanktop (white)",
+      "variant": "white",
+      "recolors": null,
+      "zPos": 35,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "torso/clothes/sleeveless/tanktop/pregnant/spellcast/white.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt"
+      ]
+    },
+    {
+      "itemId": "heads_human_male_plump",
+      "name": "Human Male Plump (lpcr lemon)",
+      "variant": "",
+      "recolors": {
+        "head": "all.lpcr.lemon"
+      },
+      "zPos": 100,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "head/heads/human/male_plump/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "face_neutral",
+      "name": "Neutral (lpcr lemon)",
+      "variant": "",
+      "recolors": {
+        "expression": "all.lpcr.lemon"
+      },
+      "zPos": 101,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "head/faces/male/neutral/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "beards_mustache",
+      "name": "Mustache (black)",
+      "variant": "",
+      "recolors": {
+        "mustache": "black"
+      },
+      "zPos": 111,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "beards/mustache/basic/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "weapon_ranged_slingshot",
+      "name": "Slingshot (slingshot)",
+      "variant": "slingshot",
+      "recolors": null,
+      "zPos": 140,
+      "layerNum": 1,
+      "yPos": 512,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "weapon/ranged/slingshot/foreground/walk/slingshot.png",
+      "supportedAnimations": [
+        "walk",
+        "shoot",
+        "hurt"
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "fileName": "head/heads/human/male_plump/spellcast.png",
+      "file": "head/heads/human/male_plump",
+      "notes": "original head by Redshrike, plump version by ??",
+      "authors": [
+        "Stephen Challener (Redshrike)",
+        "??"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-folk"
+      ]
+    },
+    {
+      "fileName": "head/faces/male/neutral/spellcast.png",
+      "file": "head/faces",
+      "notes": "Original by Redshrike, Expressions by ElizaWy, mapped to all frames by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "ElizaWy",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
+        "https://opengameart.org/content/ulpc-expanded-expressions"
+      ]
+    },
+    {
+      "fileName": "weapon/ranged/slingshot/foreground/spellcast/slingshot.png",
+      "file": "weapon/ranged/slingshot",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-more-weapons"
+      ]
+    },
+    {
+      "fileName": "body/bodies/pregnant/spellcast.png",
+      "file": "body/bodies/pregnant",
+      "notes": "see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)",
+      "authors": [
+        "bluecarrot16",
+        "JaidynReiman",
+        "Evert",
+        "TheraHedwig",
+        "MuffinElZangano",
+        "Durrani",
+        "Benjamin K. Smith (BenCreating)",
+        "Pierre Vigier (pvigier)",
+        "Eliza Wyatt (ElizaWy)",
+        "Matthew Krohn (makrohn)",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-ladies",
+        "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+        "https://opengameart.org/content/lpc-7-womens-shirts",
+        "https://opengameart.org/content/lpc-jump-expanded",
+        "https://gitlab.com/vagabondgame/lpc-characters",
+        "https://opengameart.org/content/lpc-jump-expanded",
+        "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+        "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
+      ]
+    },
+    {
+      "fileName": "beards/mustache/basic/spellcast.png",
+      "file": "beards/mustache/basic",
+      "notes": "Original by Nemisys, repositioning by JaidynReiman.",
+      "authors": [
+        "JaidynReiman",
+        "Carlo Enrico Victoria (Nemisys)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-brunet-mustache"
+      ]
+    },
+    {
+      "fileName": "torso/clothes/sleeveless/tanktop/pregnant/spellcast/white.png",
+      "file": "torso/clothes/sleeveless/tanktop/pregnant",
+      "notes": "\"pirate shirt\" by MadMarcel, edited to all poses by makrohn, cleanup and re-drawing for pregnant base by ElizaWy, edits for v3 base by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy",
+        "Matthew Krohn (makrohn)",
+        "Marcel van de Steeg (MadMarcel)",
+        "Stephen Challener (Redshrike)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+        "https://opengameart.org/content/lpc-7-womens-shirts",
+        "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+        "http://opengameart.org/content/lpc-clothing-updates"
+      ]
+    },
+    {
+      "fileName": "legs/pants/pregnant/spellcast/black.png",
+      "file": "legs/pants/pregnant",
+      "notes": "original male pants by wulax; edited for female by Joe White; recolors by JaidynReiman; walkcycle adapted to pregnant base by ElizaWy; remaining animations, recolors and edits to v3 base by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy",
+        "JaidynReiman",
+        "Joe White",
+        "Matthew Krohn (makrohn)",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+        "http://opengameart.org/content/lpc-clothing-updates"
+      ]
+    },
+    {
+      "fileName": "feet/sandals/thin/spellcast/black.png",
+      "file": "feet/sandals",
+      "notes": "edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+      "authors": [
+        "Nila122",
+        "JaidynReiman",
+        "Matthew Krohn (makrohn)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-roman-armor",
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-expanded-socks-shoes"
+      ]
+    }
+  ]
+}

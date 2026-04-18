@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bqbdsivdg7mub"
+
+[deps]
+
+files=["res://assets/kalboMacho/credits/credits.notes.translation", "res://assets/kalboMacho/credits/credits.authors.translation", "res://assets/kalboMacho/credits/credits.licenses.translation", "res://assets/kalboMacho/credits/credits.urls.translation"]
+
+source_file="res://assets/kalboMacho/credits/credits.csv"
+dest_files=["res://assets/kalboMacho/credits/credits.notes.translation", "res://assets/kalboMacho/credits/credits.authors.translation", "res://assets/kalboMacho/credits/credits.licenses.translation", "res://assets/kalboMacho/credits/credits.urls.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

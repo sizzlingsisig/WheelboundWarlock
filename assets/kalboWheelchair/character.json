@@ -1,0 +1,605 @@
+{
+  "version": 2,
+  "bodyType": "teen",
+  "selections": {
+    "head": {
+      "itemId": "heads_human_male",
+      "subId": null,
+      "variant": "",
+      "recolor": "olive",
+      "name": "Human Male (olive)"
+    },
+    "body": {
+      "itemId": "body",
+      "subId": null,
+      "variant": "",
+      "recolor": "olive",
+      "name": "Body Color (olive)"
+    },
+    "wheelchair": {
+      "itemId": "wheelchair",
+      "subId": null,
+      "variant": "black",
+      "recolor": "",
+      "name": "Wheelchair (black)"
+    },
+    "beard": {
+      "itemId": "beards_winter",
+      "subId": null,
+      "variant": "white",
+      "recolor": "",
+      "name": "Winter Beard (white)"
+    },
+    "hat": {
+      "itemId": "hat_magic_celestial",
+      "subId": null,
+      "variant": "blue",
+      "recolor": "",
+      "name": "Celestial Wizard Hat (blue)"
+    },
+    "belt": {
+      "itemId": "belt_mage",
+      "subId": null,
+      "variant": "black",
+      "recolor": "",
+      "name": "Mage Belt (black)"
+    },
+    "jacket": {
+      "itemId": "torso_jacket_tabard",
+      "subId": null,
+      "variant": "blue",
+      "recolor": "",
+      "name": "Tabard (blue)"
+    },
+    "dress": {
+      "itemId": "dress_kimono",
+      "subId": null,
+      "variant": "blue",
+      "recolor": "",
+      "name": "Kimono (blue)"
+    },
+    "clothes": {
+      "itemId": "torso_clothes_longsleeve2_polo",
+      "subId": null,
+      "variant": "",
+      "recolor": "blue",
+      "name": "Longsleeve Polo (blue)"
+    },
+    "legs": {
+      "itemId": "legs_pantaloons",
+      "subId": null,
+      "variant": "",
+      "recolor": "blue",
+      "name": "Pantaloons (blue)"
+    },
+    "shoes": {
+      "itemId": "feet_shoes_sara",
+      "subId": null,
+      "variant": "brown",
+      "recolor": "",
+      "name": "Sara Shoes (brown)"
+    }
+  },
+  "selectedAnimation": "wheelchair",
+  "showTransparencyGrid": true,
+  "applyTransparencyMask": false,
+  "matchBodyColorEnabled": true,
+  "compactDisplay": false,
+  "enabledLicenses": {
+    "CC0": true,
+    "CC-BY-SA": true,
+    "CC-BY": true,
+    "OGA-BY": true,
+    "GPL": true
+  },
+  "enabledAnimations": {
+    "spellcast": false,
+    "thrust": false,
+    "walk": false,
+    "slash": false,
+    "shoot": false,
+    "hurt": false,
+    "climb": false,
+    "idle": false,
+    "jump": false,
+    "sit": false,
+    "emote": false,
+    "run": false,
+    "watering": false,
+    "combat": false,
+    "1h_slash": false,
+    "1h_backslash": false,
+    "1h_halfslash": false
+  },
+  "url": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/#sex=teen&head=Human_Male_olive&body=Body_Color_olive&wheelchair=Wheelchair_black&beard=Winter_Beard_white&hat=Celestial_Wizard_Hat_blue&belt=Mage_Belt_black&jacket=Tabard_blue&dress=Kimono_blue&clothes=Longsleeve_Polo_blue&legs=Pantaloons_blue&shoes=Sara_Shoes_brown",
+  "layers": [
+    {
+      "itemId": "body",
+      "name": "Body Color (olive)",
+      "variant": "",
+      "recolors": {
+        "body": "olive"
+      },
+      "zPos": 10,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "body/bodies/teen/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "feet_shoes_sara",
+      "name": "Sara Shoes (brown)",
+      "variant": "brown",
+      "recolors": null,
+      "zPos": 15,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "feet/shoes/sara/thin/spellcast/brown.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "legs_pantaloons",
+      "name": "Pantaloons (blue)",
+      "variant": "",
+      "recolors": {
+        "legs": "blue"
+      },
+      "zPos": 20,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "legs/pantaloons/thin/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "dress_kimono",
+      "name": "Kimono (blue)",
+      "variant": "blue",
+      "recolors": null,
+      "zPos": 30,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "dress/kimono/normal/universal/female/spellcast/blue.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "idle"
+      ]
+    },
+    {
+      "itemId": "torso_clothes_longsleeve2_polo",
+      "name": "Longsleeve Polo (blue)",
+      "variant": "",
+      "recolors": {
+        "clothes": "blue"
+      },
+      "zPos": 35,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "torso/clothes/longsleeve/longsleeve2_polo/teen/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "torso_jacket_tabard",
+      "name": "Tabard (blue)",
+      "variant": "blue",
+      "recolors": null,
+      "zPos": 55,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "torso/jacket/tabard/female/spellcast/blue.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt"
+      ]
+    },
+    {
+      "itemId": "belt_mage",
+      "name": "Mage Belt (black)",
+      "variant": "black",
+      "recolors": null,
+      "zPos": 90,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "torso/waist/belt_mage/spellcast/black.png",
+      "supportedAnimations": [
+        "spellcast",
+        "walk",
+        "slash",
+        "hurt"
+      ]
+    },
+    {
+      "itemId": "heads_human_male",
+      "name": "Human Male (olive)",
+      "variant": "",
+      "recolors": {
+        "head": "olive"
+      },
+      "zPos": 100,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "head/heads/human/male/spellcast.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "beards_winter",
+      "name": "Winter Beard (white)",
+      "variant": "white",
+      "recolors": null,
+      "zPos": 110,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "beards/beard/winter/female/spellcast/white.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    },
+    {
+      "itemId": "hat_magic_celestial",
+      "name": "Celestial Wizard Hat (blue)",
+      "variant": "blue",
+      "recolors": null,
+      "zPos": 130,
+      "layerNum": 1,
+      "yPos": 0,
+      "isCustom": false,
+      "needsRecolor": false,
+      "fileName": "hat/magic/celestial/adult/spellcast/blue.png",
+      "supportedAnimations": [
+        "spellcast",
+        "thrust",
+        "walk",
+        "slash",
+        "shoot",
+        "hurt",
+        "climb",
+        "idle",
+        "jump",
+        "sit",
+        "emote",
+        "run",
+        "combat_idle",
+        "backslash",
+        "halfslash"
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "fileName": "head/heads/human/male/wheelchair.png",
+      "file": "head/heads/human/male",
+      "notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "Benjamin K. Smith (BenCreating)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-character-bases"
+      ]
+    },
+    {
+      "fileName": "body/bodies/teen/wheelchair.png",
+      "file": "body/bodies/teen",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Evert",
+        "TheraHedwig",
+        "Benjamin K. Smith (BenCreating)",
+        "MuffinElZangano",
+        "Durrani",
+        "Pierre Vigier (pvigier)",
+        "Eliza Wyatt (ElizaWy)",
+        "Matthew Krohn (makrohn)",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-ladies",
+        "https://opengameart.org/content/lpc-teen-unisex-base-clothes",
+        "https://opengameart.org/content/lpc-jump-expanded",
+        "https://opengameart.org/content/lpc-revised-character-basics",
+        "https://opengameart.org/content/lpc-be-seated",
+        "https://gitlab.com/vagabondgame/lpc-characters",
+        "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+        "https://opengameart.org/content/lpc-jump-expanded"
+      ]
+    },
+    {
+      "fileName": "body/wheelchair/adult/background/wheelchair/black.png",
+      "file": "body/wheelchair",
+      "notes": "",
+      "authors": [
+        "Eliza Wyatt"
+      ],
+      "licenses": [
+        "CC-BY 3.0",
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-revised-elders"
+      ]
+    },
+    {
+      "fileName": "beards/beard/winter/female/wheelchair/white.png",
+      "file": "beards/beard/winter",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-santa"
+      ]
+    },
+    {
+      "fileName": "hat/magic/celestial/adult/wheelchair/blue.png",
+      "file": "hat/magic/celestial",
+      "notes": "Original by Tracy, Adapted to ULPC by Big Bear Games, reduced colors by Napsio",
+      "authors": [
+        "Napsio (Vitruvian Studio)",
+        "Michael Whitlock (bigbeargames)",
+        "Tracy"
+      ],
+      "licenses": [
+        "CC-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-celestial-wizard-hats",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    },
+    {
+      "fileName": "torso/waist/belt_mage/wheelchair/black.png",
+      "file": "torso/waist/belt_mage",
+      "notes": "",
+      "authors": [
+        "Luke Mehl"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/female-mage-clothing-set"
+      ]
+    },
+    {
+      "fileName": "torso/jacket/tabard/female/wheelchair/blue.png",
+      "file": "torso/jacket/tabard",
+      "notes": "original by wulax, edited to v3 base by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "http://opengameart.org/content/lpc-clothing-updates"
+      ]
+    },
+    {
+      "fileName": "dress/kimono/normal/universal/female/wheelchair/blue.png",
+      "file": "dress/kimono/normal",
+      "notes": "",
+      "authors": [
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-kimono-relm"
+      ]
+    },
+    {
+      "fileName": "torso/clothes/longsleeve/longsleeve2_polo/teen/wheelchair.png",
+      "file": "torso/clothes/longsleeve/longsleeve2_polo",
+      "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman",
+      "authors": [
+        "ElizaWy",
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "http://opengameart.org/content/lpc-revised-character-basics",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+      ]
+    },
+    {
+      "fileName": "legs/pantaloons/thin/wheelchair.png",
+      "file": "legs/pantaloons",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, Original Pantaloons by Nila122, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+      "authors": [
+        "Nila122",
+        "JaidynReiman",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates",
+        "https://opengameart.org/content/more-lpc-clothes-and-hair",
+        "https://opengameart.org/content/lpc-expanded-pants"
+      ]
+    },
+    {
+      "fileName": "feet/shoes/sara/thin/wheelchair/brown.png",
+      "file": "feet/shoes/sara/thin",
+      "notes": "LPC Sara by Redshrike, contributed by William Thompsonj, Shoes Separated by Bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "Bluecarrot16",
+        "Mandi Paugh",
+        "Stephen Challener (Redshrike)",
+        "William.Thompsonj"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0+",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "http://opengameart.org/content/sara-wizard",
+        "https://opengameart.org/content/lpc-sara",
+        "https://opengameart.org/content/lpc-expanded-socks-shoes"
+      ]
+    }
+  ]
+}
