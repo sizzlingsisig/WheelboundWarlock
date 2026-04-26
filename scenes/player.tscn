@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://csrmip1bsqsud"]
+
+[ext_resource type="PackedScene" path="res://base_character.tscn" id=1]
+[ext_resource type="Script" path="res://scenes/player.gd" id=2]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 12.0415945
+
+[node name="player" type="CharacterBody2D" unique_id=793208632]
+script = ExtResource(2)
+
+[node name="BaseCharacter" parent="." unique_id=1651300779 instance=ExtResource(1)]
+position = Vector2(97, 244)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2126893246]
+position = Vector2(95, 264)
+shape = SubResource("CircleShape2D_g2els")
