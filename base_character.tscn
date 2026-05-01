@@ -594,22 +594,26 @@ script = ExtResource("base_character_script")
 
 [node name="kalbobase" type="AnimatedSprite2D" parent="." unique_id=191752401]
 visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e8euo")
 animation = &"special_left"
 
 [node name="kalbowheelchair" type="AnimatedSprite2D" parent="." unique_id=227159873]
 visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_g41a5")
 animation = &"walk_up"
 frame_progress = 0.30673277
 
 [node name="kalbomacho" type="AnimatedSprite2D" parent="." unique_id=256798680]
 visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e8euo")
 animation = &"special_right"
 
 [node name="kalboarmor" type="AnimatedSprite2D" parent="." unique_id=423994151]
 visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e8euo")
 animation = &"attack_right"
 frame_progress = 0.9153176
