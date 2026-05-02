@@ -3,6 +3,7 @@ extends Node
 
 const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH = "res://Textures/Items/Weapons/"
+const SPECIAL_WEAPON_PATH = "res://assets/kalboWheelchair/"
 const UPGRADES = {
 	"icespear1": {
 		"icon": WEAPON_PATH + "ice_spear.png",
@@ -98,6 +99,102 @@ const UPGRADES = {
 		"details": "An additional tornado is created and the knockback is increased by 25%",
 		"level": "Level: 4",
 		"prerequisite": ["tornado3"],
+		"type": "weapon"
+	},
+	"lightning1": {
+		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"displayname": "Lightning",
+		"details": "Lightning strikes and chains to 1 nearby enemy",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
+	"lightning2": {
+		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"displayname": "Lightning",
+		"details": "Lightning chains to 1 additional enemy",
+		"level": "Level: 2",
+		"prerequisite": ["lightning1"],
+		"type": "weapon"
+	},
+	"lightning3": {
+		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"displayname": "Lightning",
+		"details": "Lightning damage increased by 3",
+		"level": "Level: 3",
+		"prerequisite": ["lightning2"],
+		"type": "weapon"
+	},
+	"lightning4": {
+		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"displayname": "Lightning",
+		"details": "Lightning chains to 1 additional enemy",
+		"level": "Level: 4",
+		"prerequisite": ["lightning3"],
+		"type": "weapon"
+	},
+	"hollowpurple1": {
+		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"displayname": "Hollow Purple",
+		"details": "A persistent purple radius damages enemies around you",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
+	"hollowpurple2": {
+		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"displayname": "Hollow Purple",
+		"details": "Hollow Purple radius grows larger",
+		"level": "Level: 2",
+		"prerequisite": ["hollowpurple1"],
+		"type": "weapon"
+	},
+	"hollowpurple3": {
+		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"displayname": "Hollow Purple",
+		"details": "Hollow Purple damage and size increase",
+		"level": "Level: 3",
+		"prerequisite": ["hollowpurple2"],
+		"type": "weapon"
+	},
+	"hollowpurple4": {
+		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"displayname": "Hollow Purple",
+		"details": "Hollow Purple reaches maximum size and damage",
+		"level": "Level: 4",
+		"prerequisite": ["hollowpurple3"],
+		"type": "weapon"
+	},
+	"willowhisp1": {
+		"icon": SPECIAL_WEAPON_PATH + "spark.png",
+		"displayname": "Will O Whisps",
+		"details": "A single orb rotates around you and damages enemies",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
+	"willowhisp2": {
+		"icon": SPECIAL_WEAPON_PATH + "spark.png",
+		"displayname": "Will O Whisps",
+		"details": "Orb hit cooldown is reduced",
+		"level": "Level: 2",
+		"prerequisite": ["willowhisp1"],
+		"type": "weapon"
+	},
+	"willowhisp3": {
+		"icon": SPECIAL_WEAPON_PATH + "spark.png",
+		"displayname": "Will O Whisps",
+		"details": "An additional orb rotates around you",
+		"level": "Level: 3",
+		"prerequisite": ["willowhisp2"],
+		"type": "weapon"
+	},
+	"willowhisp4": {
+		"icon": SPECIAL_WEAPON_PATH + "spark.png",
+		"displayname": "Will O Whisps",
+		"details": "Another orb is added and hit cooldown is reduced",
+		"level": "Level: 4",
+		"prerequisite": ["willowhisp3"],
 		"type": "weapon"
 	},
 	"armor1": {
@@ -253,4 +350,3 @@ const UPGRADES = {
 		"type": "item"
 	}
 }
-

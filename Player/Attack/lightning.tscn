@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://lightning123"]
+
+[ext_resource type="Script" uid="uid://i0lsw6vcmhom" path="res://Player/Attack/lightning.gd" id="1_lightning"]
+[ext_resource type="Texture2D" uid="uid://h0f2d0ahlc7s" path="res://assets/kalboWheelchair/Lightning.png" id="2_lightning"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk6wi"]
+atlas = ExtResource("2_lightning")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k2t4"]
+atlas = ExtResource("2_lightning")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arha6"]
+atlas = ExtResource("2_lightning")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns7li"]
+atlas = ExtResource("2_lightning")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmxa0"]
+atlas = ExtResource("2_lightning")
+region = Rect2(256, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etw7u"]
+atlas = ExtResource("2_lightning")
+region = Rect2(320, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj5rr"]
+atlas = ExtResource("2_lightning")
+region = Rect2(384, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb7f0"]
+atlas = ExtResource("2_lightning")
+region = Rect2(448, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1rur"]
+atlas = ExtResource("2_lightning")
+region = Rect2(512, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2rpf"]
+atlas = ExtResource("2_lightning")
+region = Rect2(576, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk6wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k2t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arha6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns7li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmxa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etw7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj5rr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb7f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1rur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2rpf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt"]
+size = Vector2(48, 48)
+
+[node name="Lightning" type="Area2D" unique_id=2045085019 groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_lightning")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2101034306]
+sprite_frames = SubResource("SpriteFrames_lt")
+autoplay = "default"
+frame_progress = 0.903313
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752991468]
+shape = SubResource("RectangleShape2D_lt")
+disabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=529019929]
+wait_time = 0.12
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

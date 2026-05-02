@@ -175,6 +175,14 @@ wait_time = 0.2
 [node name="JavelinBase" type="Node2D" parent="Attack" unique_id=947041637]
 unique_name_in_owner = true
 
+[node name="LightningTimer" type="Timer" parent="Attack" unique_id=222222221]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="LightningAttackTimer" type="Timer" parent="Attack/LightningTimer" unique_id=222222222]
+unique_name_in_owner = true
+wait_time = 0.3
+
 [node name="EnemyDetectionArea" type="Area2D" parent="." unique_id=995695933]
 visible = false
 collision_layer = 4
@@ -349,5 +357,7 @@ columns = 10
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 [connection signal="click_end" from="GUILayer/GUI/DeathPanel/btn_menu" to="." method="_on_btn_menu_click_end"]
+[connection signal="timeout" from="Attack/LightningTimer" to="." method="_on_lightning_timer_timeout"]
+[connection signal="timeout" from="Attack/LightningTimer/LightningAttackTimer" to="." method="_on_lightning_attack_timer_timeout"]
 
 [editable path="HurtBox"]

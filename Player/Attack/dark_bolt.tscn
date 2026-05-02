@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://brlfb8o13d6be"]
+
+[ext_resource type="Script" path="res://Player/Attack/dark_bolt.gd" id="1_darkbolt"]
+[ext_resource type="Texture2D" uid="uid://dgnlnbiwnddim" path="res://assets/kalboWheelchair/Dark-Bolt.png" id="2_darkbolt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tflp"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(0, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjt0s"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(64, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqkkb"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(128, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chtj3"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(192, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uwn6"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(256, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82sxm"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(320, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw3j4"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(384, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leh7w"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(448, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s416q"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(512, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hvg4"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(576, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hhjp"]
+atlas = ExtResource("2_darkbolt")
+region = Rect2(640, 0, 64, 88)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_db"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tflp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjt0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqkkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chtj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uwn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82sxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw3j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_leh7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s416q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hvg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hhjp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db"]
+size = Vector2(48, 48)
+
+[node name="DarkBolt" type="Area2D" unique_id=632837350 groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_darkbolt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1893257788]
+sprite_frames = SubResource("SpriteFrames_db")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1009362926]
+shape = SubResource("RectangleShape2D_db")
+disabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1094108598]
+wait_time = 0.12
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

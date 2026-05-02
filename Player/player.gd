@@ -15,6 +15,9 @@ var collected_experience = 0
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
+var lightning = preload("res://Player/Attack/lightning.tscn")
+var hollowPurple = preload("res://Player/Attack/hollow_purple.tscn")
+var willOWhispOrb = preload("res://Player/Attack/will_o_whisp_orb.tscn")
 
 #AttackNodes
 @onready var iceSpearTimer = get_node("%IceSpearTimer")
@@ -22,6 +25,8 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 @onready var tornadoTimer = get_node("%TornadoTimer")
 @onready var tornadoAttackTimer = get_node("%TornadoAttackTimer")
 @onready var javelinBase = get_node("%JavelinBase")
+@onready var lightningTimer = get_node("%LightningTimer")
+@onready var lightningAttackTimer = get_node("%LightningAttackTimer")
 
 #UPGRADES
 var collected_upgrades = []
@@ -47,6 +52,22 @@ var tornado_level = 0
 #Javelin
 var javelin_ammo = 0
 var javelin_level = 0
+
+#Lightning
+var lightning_ammo = 0
+var lightning_baseammo = 0
+var lightning_attackspeed = 2.0
+var lightning_level = 0
+
+#HollowPurple
+var hollowpurple_level = 0
+var hollowpurple_aura = null
+
+#WillOWhisps
+var willowhisp_level = 0
+var willowhisp_orb_count = 0
+var willowhisp_hit_cooldown = 0.8
+var willowhisp_orbs = []
 
 
 #Enemy Related
@@ -117,6 +138,14 @@ func attack():
 			tornadoTimer.start()
 	if javelin_level > 0:
 		spawn_javelin()
+	if lightning_level > 0:
+		lightningTimer.wait_time = lightning_attackspeed * (1-spell_cooldown)
+		if lightningTimer.is_stopped():
+			lightningTimer.start()
+	if hollowpurple_level > 0:
+		ensure_hollow_purple()
+	if willowhisp_level > 0:
+		refresh_will_o_whisps()
 
 func screen_shake(duration: float, intensity: float):
 	var camera = $Camera2D
@@ -196,6 +225,59 @@ func spawn_javelin():
 	for i in get_javelins:
 		if i.has_method("update_javelin"):
 			i.update_javelin()
+
+func ensure_hollow_purple():
+	if hollowpurple_level <= 0:
+		return
+	if not is_instance_valid(hollowpurple_aura):
+		hollowpurple_aura = hollowPurple.instantiate()
+		hollowpurple_aura.position = Vector2.ZERO
+		add_child(hollowpurple_aura)
+	if hollowpurple_aura.has_method("update_hollow_purple"):
+		hollowpurple_aura.update_hollow_purple(hollowpurple_level)
+
+func refresh_will_o_whisps():
+	if willowhisp_level <= 0:
+		return
+	var valid_orbs = []
+	for orb in willowhisp_orbs:
+		if is_instance_valid(orb):
+			valid_orbs.append(orb)
+	willowhisp_orbs = valid_orbs
+	
+	while willowhisp_orbs.size() < willowhisp_orb_count:
+		var new_orb = willOWhispOrb.instantiate()
+		add_child(new_orb)
+		willowhisp_orbs.append(new_orb)
+	
+	while willowhisp_orbs.size() > willowhisp_orb_count:
+		var orb_to_remove = willowhisp_orbs.pop_back()
+		if is_instance_valid(orb_to_remove):
+			orb_to_remove.queue_free()
+	
+	var total_orbs = willowhisp_orbs.size()
+	for i in range(total_orbs):
+		var orb = willowhisp_orbs[i]
+		if is_instance_valid(orb) and orb.has_method("configure_orb"):
+			orb.configure_orb(self, i, total_orbs, willowhisp_level, willowhisp_hit_cooldown)
+
+func _on_lightning_timer_timeout():
+	lightning_ammo += lightning_baseammo + additional_attacks
+	lightningAttackTimer.start()
+
+func _on_lightning_attack_timer_timeout():
+	if lightning_ammo > 0:
+		var target = get_random_target()
+		if target != Vector2.UP:
+			var lightning_attack = lightning.instantiate()
+			lightning_attack.position = target
+			lightning_attack.level = lightning_level
+			add_child(lightning_attack)
+		lightning_ammo -= 1
+		if lightning_ammo > 0:
+			lightningAttackTimer.start()
+		else:
+			lightningAttackTimer.stop()
 
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -302,6 +384,37 @@ func upgrade_character(upgrade):
 			javelin_level = 3
 		"javelin4":
 			javelin_level = 4
+		"lightning1":
+			lightning_level = 1
+			lightning_baseammo += 1
+		"lightning2":
+			lightning_level = 2
+		"lightning3":
+			lightning_level = 3
+		"lightning4":
+			lightning_level = 4
+		"hollowpurple1":
+			hollowpurple_level = 1
+		"hollowpurple2":
+			hollowpurple_level = 2
+		"hollowpurple3":
+			hollowpurple_level = 3
+		"hollowpurple4":
+			hollowpurple_level = 4
+		"willowhisp1":
+			willowhisp_level = 1
+			willowhisp_orb_count = 1
+			willowhisp_hit_cooldown = 0.8
+		"willowhisp2":
+			willowhisp_level = 2
+			willowhisp_hit_cooldown = 0.6
+		"willowhisp3":
+			willowhisp_level = 3
+			willowhisp_orb_count = 2
+		"willowhisp4":
+			willowhisp_level = 4
+			willowhisp_orb_count = 3
+			willowhisp_hit_cooldown = 0.5
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":

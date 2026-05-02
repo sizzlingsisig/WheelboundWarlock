@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bgsvgu2p2u146"]
+
+[ext_resource type="Script" path="res://Player/Attack/spark_aura.gd" id="1_spark_aura"]
+[ext_resource type="Texture2D" uid="uid://djfcg2k7op80b" path="res://assets/kalboWheelchair/spark.png" id="2_spark"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spark"]
+radius = 60.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6tcq"]
+atlas = ExtResource("2_spark")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jka5g"]
+atlas = ExtResource("2_spark")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d0wb"]
+atlas = ExtResource("2_spark")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xurr"]
+atlas = ExtResource("2_spark")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jowiw"]
+atlas = ExtResource("2_spark")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw1qk"]
+atlas = ExtResource("2_spark")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbc1o"]
+atlas = ExtResource("2_spark")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fvp8n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6tcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jka5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d0wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xurr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jowiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw1qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbc1o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="SparkAura" type="Area2D" unique_id=172581362 groups=["attack"]]
+top_level = true
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_spark_aura")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346424273]
+shape = SubResource("CircleShape2D_spark")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1881097148]
+sprite_frames = SubResource("SpriteFrames_fvp8n")
+frame_progress = 0.36895412
