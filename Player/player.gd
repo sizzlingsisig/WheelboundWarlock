@@ -5,6 +5,8 @@ var debug_mode = false
 var movement_speed = 40.0
 var hp = 80
 var maxhp = 80
+@export var iframe_duration = 0.4
+var is_invulnerable = false
 var last_movement = Vector2.UP
 var time = 0
 
@@ -133,6 +135,7 @@ func _ready():
 		spell_cooldown = 0.2
 		additional_attacks = 2
 		collected_upgrades = ["icespear1","icespear2","icespear3","icespear4","tornado1","tornado2","tornado3","tornado4","immolate1","immolate2","immolate3","immolate4","lightning1","lightning2","lightning3","lightning4","javelin1","javelin2","javelin3","javelin4","hollowpurple1","hollowpurple2","hollowpurple3","hollowpurple4","willowhisp1","willowhisp2","willowhisp3","willowhisp4","armor1","armor2","armor3","armor4","speed1","speed2","speed3","speed4","tome1","tome2","tome3","tome4","scroll1","scroll2","scroll3","scroll4","ring1","ring2"]
+		call_deferred("_populate_debug_hud")
 		ensure_hollow_purple()
 		refresh_will_o_whisps()
 		spawn_javelin()
@@ -287,6 +290,13 @@ func screen_shake(duration: float, intensity: float):
 	camera.offset = Vector2.ZERO
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
+	if is_invulnerable:
+		return
+	is_invulnerable = true
+	get_tree().create_timer(iframe_duration).timeout.connect(func():
+		is_invulnerable = false
+	)
+
 	hp -= clamp(damage-armor, 1.0, 999.0)
 	healthBar.max_value = maxhp
 	healthBar.value = hp
@@ -574,6 +584,10 @@ func adjust_gui_collection(upgrade):
 					collectedWeapons.add_child(new_item)
 				"upgrade":
 					collectedUpgrades.add_child(new_item)
+
+func _populate_debug_hud():
+	for upgrade in collected_upgrades:
+		adjust_gui_collection(upgrade)
 
 func death():
 	deathPanel.visible = true

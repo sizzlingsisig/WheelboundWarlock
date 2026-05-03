@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var movement_speed = 20.0
 @export var hp = 10
+@export var max_hp = 10
 @export var knockback_recovery = 3.5
 @export var experience = 1
 @export var enemy_damage = 1
@@ -19,7 +20,6 @@ var death_anim = preload("res://Enemy/explosion.tscn")
 var exp_gem = preload("res://Objects/experience_gem.tscn")
 
 signal remove_from_array(object)
-
 
 func _ready():
 	anim.play("walk")
@@ -47,7 +47,12 @@ func death():
 	new_gem.global_position = global_position
 	new_gem.experience = experience
 	loot_base.call_deferred("add_child",new_gem)
-	queue_free()
+	return_to_pool()
+
+func return_to_pool():
+	var spawner = get_tree().get_first_node_in_group("enemy_spawner")
+	if spawner:
+		spawner.return_enemy_to_pool(self)
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	hp -= damage

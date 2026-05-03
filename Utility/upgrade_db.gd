@@ -4,9 +4,22 @@ extends Node
 const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH = "res://Textures/Items/Weapons/"
 const SPECIAL_WEAPON_PATH = "res://assets/kalboWheelchair/"
+const SPRITESHEET_PATH = "res://assets/kalboWheelchair/spritesheets.png"
+
+const SPRITE_REGION = {
+	"icespear": Rect2i(16, 32, 16, 16),
+	"tornado": Rect2i(48, 112, 16, 16),
+	"immolate": Rect2i(64, 0, 16, 16),
+	"hollowpurple": Rect2i(64, 64, 16, 16),
+	"willowhisp": Rect2i(16, 128, 16, 16),
+	"lightning": Rect2i(0, 16, 16, 16),
+}
+
 const UPGRADES = {
 	"icespear1": {
 		"icon": WEAPON_PATH + "ice_spear.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["icespear"],
 		"displayname": "Ice Spear",
 		"details": "A spear of ice is thrown at a random enemy",
 		"level": "Level: 1",
@@ -15,6 +28,8 @@ const UPGRADES = {
 	},
 	"icespear2": {
 		"icon": WEAPON_PATH + "ice_spear.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["icespear"],
 		"displayname": "Ice Spear",
 		"details": "An addition Ice Spear is thrown",
 		"level": "Level: 2",
@@ -71,6 +86,8 @@ const UPGRADES = {
 	},
 	"tornado1": {
 		"icon": WEAPON_PATH + "tornado.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["tornado"],
 		"displayname": "Tornado",
 		"details": "A tornado is created and random heads somewhere in the players direction",
 		"level": "Level: 1",
@@ -79,6 +96,8 @@ const UPGRADES = {
 	},
 	"tornado2": {
 		"icon": WEAPON_PATH + "tornado.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["tornado"],
 		"displayname": "Tornado",
 		"details": "An additional Tornado is created",
 		"level": "Level: 2",
@@ -87,6 +106,8 @@ const UPGRADES = {
 	},
 	"tornado3": {
 		"icon": WEAPON_PATH + "tornado.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["tornado"],
 		"displayname": "Tornado",
 		"details": "The Tornado cooldown is reduced by 0.5 seconds",
 		"level": "Level: 3",
@@ -103,6 +124,8 @@ const UPGRADES = {
 	},
 	"lightning1": {
 		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["lightning"],
 		"displayname": "Lightning",
 		"details": "Lightning strikes and chains to 1 nearby enemy",
 		"level": "Level: 1",
@@ -111,6 +134,8 @@ const UPGRADES = {
 	},
 	"lightning2": {
 		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["lightning"],
 		"displayname": "Lightning",
 		"details": "Lightning chains to 1 additional enemy",
 		"level": "Level: 2",
@@ -119,6 +144,8 @@ const UPGRADES = {
 	},
 	"lightning3": {
 		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["lightning"],
 		"displayname": "Lightning",
 		"details": "Lightning damage increased by 3",
 		"level": "Level: 3",
@@ -127,6 +154,8 @@ const UPGRADES = {
 	},
 	"lightning4": {
 		"icon": SPECIAL_WEAPON_PATH + "lightningicon.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["lightning"],
 		"displayname": "Lightning",
 		"details": "Lightning chains to 1 additional enemy",
 		"level": "Level: 4",
@@ -135,6 +164,8 @@ const UPGRADES = {
 	},
 	"immolate1": {
 		"icon": SPECIAL_WEAPON_PATH + "fire_column_medium/fire_column_medium_1.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["immolate"],
 		"displayname": "Immolate",
 		"details": "Surround yourself in fire - damages enemies on contact and increases speed",
 		"level": "Level: 1",
@@ -143,6 +174,8 @@ const UPGRADES = {
 	},
 	"immolate2": {
 		"icon": SPECIAL_WEAPON_PATH + "fire_column_medium/fire_column_medium_1.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["immolate"],
 		"displayname": "Immolate",
 		"details": "Increased speed and +1 damage",
 		"level": "Level: 2",
@@ -167,6 +200,8 @@ const UPGRADES = {
 	},
 	"hollowpurple1": {
 		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["hollowpurple"],
 		"displayname": "Hollow Purple",
 		"details": "A persistent purple radius damages enemies around you",
 		"level": "Level: 1",
@@ -175,6 +210,8 @@ const UPGRADES = {
 	},
 	"hollowpurple2": {
 		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["hollowpurple"],
 		"displayname": "Hollow Purple",
 		"details": "Hollow Purple radius grows larger",
 		"level": "Level: 2",
@@ -183,6 +220,8 @@ const UPGRADES = {
 	},
 	"hollowpurple3": {
 		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["hollowpurple"],
 		"displayname": "Hollow Purple",
 		"details": "Hollow Purple damage and size increase",
 		"level": "Level: 3",
@@ -191,6 +230,8 @@ const UPGRADES = {
 	},
 	"hollowpurple4": {
 		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["hollowpurple"],
 		"displayname": "Hollow Purple",
 		"details": "Hollow Purple reaches maximum size and damage",
 		"level": "Level: 4",
@@ -199,6 +240,8 @@ const UPGRADES = {
 	},
 	"willowhisp1": {
 		"icon": SPECIAL_WEAPON_PATH + "spark.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["willowhisp"],
 		"displayname": "Will O Whisps",
 		"details": "A single orb rotates around you and damages enemies",
 		"level": "Level: 1",
@@ -207,6 +250,8 @@ const UPGRADES = {
 	},
 	"willowhisp2": {
 		"icon": SPECIAL_WEAPON_PATH + "spark.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": SPRITE_REGION["willowhisp"],
 		"displayname": "Will O Whisps",
 		"details": "Orb hit cooldown is reduced",
 		"level": "Level: 2",
