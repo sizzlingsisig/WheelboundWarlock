@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 UpgradeDb="*res://Utility/upgrade_db.tscn"
+GameState="*uid://djvp2yabikogy"
 
 [display]
 

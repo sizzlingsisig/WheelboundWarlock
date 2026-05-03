@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://lightning_icon" path="res://assets/kalboWheelchair/lightningicon.png" id="18_icon4"]
 [ext_resource type="Texture2D" uid="uid://lightning_icon_small" path="res://assets/kalboWheelchair/lightningicon.png" id="19_icon_small"]
 [ext_resource type="PackedScene" uid="uid://sprite_skill_bar_scene" path="res://Player/GUI/sprite_skill_bar.tscn" id="20_sprite_skillbar"]
+[ext_resource type="PackedScene" path="res://Player/GUI/pause_menu.tscn" id="21_pausemenu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pfstq"]
 animations = [{
@@ -359,6 +360,10 @@ columns = 10
 theme_override_constants/separation = 2
 
 [node name="SpriteSkillBar" parent="GUILayer/GUI" instance=ExtResource("20_sprite_skillbar")]
+
+[node name="PauseMenu" parent="GUILayer/GUI" instance=ExtResource("21_pausemenu")]
+process_mode = 2
+visible = false
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]

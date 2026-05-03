@@ -146,6 +146,7 @@ func _ready():
 		upgrade_character("icespear1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
+	GameState.set_state(GameState.State.PLAYING)
 
 func movement():
 	if is_moving:
@@ -172,6 +173,13 @@ func movement():
 	move_and_slide()
 
 func _input(event):
+	if not GameState.can_move():
+		return
+
+	if event.is_action_pressed("ui_cancel"):
+		$GUILayer/GUI/PauseMenu.show_pause()
+		return
+
 	if event.is_action_pressed("move_to_target"):
 		var mouse_pos = get_global_mouse_position()
 		movement_target = mouse_pos
@@ -438,6 +446,7 @@ func levelup():
 		upgradeOptions.add_child(option_choice)
 		options += 1
 	get_tree().paused = true
+	GameState.set_state(GameState.State.UPGRADE)
 
 func upgrade_character(upgrade):
 	match upgrade:
@@ -549,6 +558,7 @@ func upgrade_character(upgrade):
 	levelPanel.visible = false
 	levelPanel.position = Vector2(800,50)
 	get_tree().paused = false
+	GameState.set_state(GameState.State.PLAYING)
 	calculate_experience(0)
 	
 func get_random_item():
@@ -610,6 +620,10 @@ func death():
 	deathPanel.visible = true
 	emit_signal("playerdeath")
 	get_tree().paused = true
+	if time >= 300:
+		GameState.set_state(GameState.State.WIN)
+	else:
+		GameState.set_state(GameState.State.GAME_OVER)
 	var tween = deathPanel.create_tween()
 	tween.tween_property(deathPanel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
@@ -622,5 +636,5 @@ func death():
 
 
 func _on_btn_menu_click_end():
-	get_tree().paused = false
+	GameState.set_state(GameState.State.MENU)
 	var _level = get_tree().change_scene_to_file("res://TitleScreen/menu.tscn")

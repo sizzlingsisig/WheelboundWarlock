@@ -17,7 +17,7 @@ func _ready():
 
 func _process(_delta):
 	var level_up_visible = get_node_or_null("%LevelUp")
-	var should_hide = get_tree().paused or (level_up_visible and level_up_visible.visible)
+	var should_hide = GameState.is_paused() or (level_up_visible and level_up_visible.visible)
 	visible = not should_hide
 	
 	if not should_hide:

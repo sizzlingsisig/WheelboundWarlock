@@ -2,6 +2,11 @@ extends Control
 
 var level = "res://World/world.tscn"
 
+func _ready():
+	get_tree().paused = false
+	if has_node("/root/GameState"):
+		GameState.set_state(GameState.State.MENU)
+
 func _on_btn_play_click_end():
 	var _level = get_tree().change_scene_to_file(level)
 

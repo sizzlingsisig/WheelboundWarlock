@@ -45,5 +45,5 @@ offset_right = 360.0
 offset_bottom = 320.0
 text = "Exit"
 
-[connection signal="click_end" from="btn_play" to="." method="_on_btn_play_click_end"]
-[connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]
+[connection signal="pressed" from="btn_play" to="." method="_on_btn_play_click_end"]
+[connection signal="pressed" from="btn_exit" to="." method="_on_btn_exit_click_end"]
