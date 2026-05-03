@@ -19,6 +19,14 @@
 [ext_resource type="AudioStream" uid="uid://bnv76nm5171dn" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
 [ext_resource type="AudioStream" uid="uid://ca6physj6mqei" path="res://Audio/SoundEffect/Lose.ogg" id="11_28kfi"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="12_i8esf"]
+[ext_resource type="Script" uid="uid://attack_bar_script" path="res://Player/GUI/attack_bar.gd" id="13_new"]
+[ext_resource type="Texture2D" uid="uid://ice_spear_icon" path="res://Textures/Items/Weapons/ice_spear.png" id="14_icon1"]
+[ext_resource type="Texture2D" uid="uid://tornado_icon" path="res://Textures/Items/Weapons/tornado.png" id="15_icon2"]
+[ext_resource type="Texture2D" uid="uid://javelin_icon" path="res://Textures/Items/Weapons/javelin_3_new.png" id="16_icon3"]
+[ext_resource type="Texture2D" uid="uid://fire_pillar_icon" path="res://assets/kalboWheelchair/fire_column_medium/fire_column_medium_4.png" id="17_icon_fire"]
+[ext_resource type="Texture2D" uid="uid://lightning_icon" path="res://assets/kalboWheelchair/lightningicon.png" id="18_icon4"]
+[ext_resource type="Texture2D" uid="uid://lightning_icon_small" path="res://assets/kalboWheelchair/lightningicon.png" id="19_icon_small"]
+[ext_resource type="PackedScene" uid="uid://sprite_skill_bar_scene" path="res://Player/GUI/sprite_skill_bar.tscn" id="20_sprite_skillbar"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pfstq"]
 animations = [{
@@ -127,6 +135,7 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vwp8"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1785590622 groups=["player"]]
+z_index = 10
 motion_mode = 1
 script = ExtResource("1_37q80")
 
@@ -346,6 +355,8 @@ offset_top = 40.0
 offset_right = 208.0
 offset_bottom = 56.0
 columns = 10
+
+[node name="SpriteSkillBar" parent="GUILayer/GUI" instance=ExtResource("20_sprite_skillbar")]
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-const BASE_RADIUS = 36.0
+const BASE_RADIUS = 50.0
 
 var level = 1
 var damage = 4
@@ -9,6 +9,8 @@ var attack_size = 1.0
 var hit_interval = 0.35
 
 var enemy_next_hit = {}
+var rotation_angle = 0.0
+var pulse_time = 0.0
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var collision = $CollisionShape2D
@@ -24,26 +26,31 @@ func update_hollow_purple(new_level):
 	match level:
 		1:
 			damage = 4
-			attack_size = 1.0 * (1 + spell_size)
+			attack_size = 1.4 * (1 + spell_size)
 		2:
 			damage = 5
-			attack_size = 1.2 * (1 + spell_size)
+			attack_size = 1.6 * (1 + spell_size)
 		3:
 			damage = 7
-			attack_size = 1.35 * (1 + spell_size)
+			attack_size = 1.8 * (1 + spell_size)
 		4:
 			damage = 9
-			attack_size = 1.5 * (1 + spell_size)
+			attack_size = 2.0 * (1 + spell_size)
 	if collision.shape is CircleShape2D:
 		collision.shape.radius = BASE_RADIUS * attack_size
-	queue_redraw()
 
-func _physics_process(_delta):
+func _physics_process(delta):
+	rotation_angle += delta * 0.8
+	pulse_time += delta
+	queue_redraw()
+	
 	var now = Time.get_ticks_msec() / 1000.0
 	for body in get_overlapping_bodies():
 		if not is_instance_valid(body):
 			continue
 		if body.is_queued_for_deletion():
+			continue
+		if body == player:
 			continue
 		if not body.has_method("_on_hurt_box_hurt"):
 			continue
@@ -56,6 +63,19 @@ func _physics_process(_delta):
 		enemy_next_hit[body_id] = now + hit_interval
 
 func _draw():
-	var radius = BASE_RADIUS * attack_size
-	draw_circle(Vector2.ZERO, radius, Color(0.55, 0.2, 0.8, 0.25))
-	draw_arc(Vector2.ZERO, radius, 0.0, TAU, 64, Color(0.82, 0.58, 1.0, 0.95), 2.0)
+	var base_r = BASE_RADIUS * attack_size
+	var pulse = 1.0 + sin(pulse_time * 3.0) * 0.1
+	var r = base_r * pulse
+	
+	var glow_color = Color(0.95, 0.5, 1.0, 0.15)
+	draw_circle(Vector2.ZERO, r + 20, glow_color)
+	draw_circle(Vector2.ZERO, r + 10, glow_color)
+	
+	var main_ring_color = Color(1.0, 0.6, 1.0, 0.9)
+	draw_arc(Vector2.ZERO, r, 0.0, TAU, 64, main_ring_color, 5.0)
+	
+	var inner_color = Color(0.8, 0.4, 0.9, 0.6)
+	draw_arc(Vector2.ZERO, r - 15, 0.0, TAU, 48, inner_color, 3.0)
+	
+	var outer_glow = Color(0.7, 0.3, 0.8, 0.4)
+	draw_arc(Vector2.ZERO, r + 8, 0.0, TAU, 32, outer_glow, 2.0)

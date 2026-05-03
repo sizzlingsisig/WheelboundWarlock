@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
+var debug_mode = false
 
 var movement_speed = 40.0
 var hp = 80
 var maxhp = 80
 var last_movement = Vector2.UP
 var time = 0
+
+var movement_target = Vector2.ZERO
+var is_moving = false
+var stop_distance = 5.0
 
 var experience = 0
 var experience_level = 1
@@ -16,17 +21,12 @@ var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
 var lightning = preload("res://Player/Attack/lightning.tscn")
+var immolate = preload("res://Player/Attack/immolate.tscn")
 var hollowPurple = preload("res://Player/Attack/hollow_purple.tscn")
 var willOWhispOrb = preload("res://Player/Attack/will_o_whisp_orb.tscn")
 
 #AttackNodes
-@onready var iceSpearTimer = get_node("%IceSpearTimer")
-@onready var iceSpearAttackTimer = get_node("%IceSpearAttackTimer")
-@onready var tornadoTimer = get_node("%TornadoTimer")
-@onready var tornadoAttackTimer = get_node("%TornadoAttackTimer")
 @onready var javelinBase = get_node("%JavelinBase")
-@onready var lightningTimer = get_node("%LightningTimer")
-@onready var lightningAttackTimer = get_node("%LightningAttackTimer")
 
 #UPGRADES
 var collected_upgrades = []
@@ -59,6 +59,15 @@ var lightning_baseammo = 0
 var lightning_attackspeed = 2.0
 var lightning_level = 0
 
+#Immolate
+var immolate_ammo = 0
+var immolate_baseammo = 0
+var immolate_attackspeed = 5.0
+var immolate_level = 0
+var immolate_active = false
+var immolate_speed_boost = 0.0
+var immolate_aura = null
+
 #HollowPurple
 var hollowpurple_level = 0
 var hollowpurple_aura = null
@@ -68,6 +77,11 @@ var willowhisp_level = 0
 var willowhisp_orb_count = 0
 var willowhisp_hit_cooldown = 0.8
 var willowhisp_orbs = []
+
+var icespear_cooldown = 0.0
+var tornado_cooldown = 0.0
+var immolate_cooldown = 0.0
+var lightning_cooldown = 0.0
 
 
 #Enemy Related
@@ -99,53 +113,166 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("icespear1")
-	attack()
+	if debug_mode:
+		icespear_level = 4
+		icespear_baseammo = 2
+		tornado_level = 4
+		tornado_baseammo = 2
+		immolate_level = 4
+		immolate_baseammo = 2
+		lightning_level = 4
+		lightning_baseammo = 2
+		javelin_level = 4
+		javelin_ammo = 3
+		hollowpurple_level = 4
+		willowhisp_level = 4
+		willowhisp_orb_count = 3
+		armor = 4
+		movement_speed = 120.0
+		spell_size = 0.4
+		spell_cooldown = 0.2
+		additional_attacks = 2
+		collected_upgrades = ["icespear1","icespear2","icespear3","icespear4","tornado1","tornado2","tornado3","tornado4","immolate1","immolate2","immolate3","immolate4","lightning1","lightning2","lightning3","lightning4","javelin1","javelin2","javelin3","javelin4","hollowpurple1","hollowpurple2","hollowpurple3","hollowpurple4","willowhisp1","willowhisp2","willowhisp3","willowhisp4","armor1","armor2","armor3","armor4","speed1","speed2","speed3","speed4","tome1","tome2","tome3","tome4","scroll1","scroll2","scroll3","scroll4","ring1","ring2"]
+		ensure_hollow_purple()
+		refresh_will_o_whisps()
+		spawn_javelin()
+		activate_immolate()
+	else:
+		upgrade_character("icespear1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 
-func _physics_process(delta):
-	movement()
-
 func movement():
-	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
-	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
-	var mov = Vector2(x_mov,y_mov)
-	
-	if mov != Vector2.ZERO:
-		last_movement = mov
-		if abs(mov.x) > abs(mov.y):
-			sprite.play("move_right" if mov.x > 0 else "move_left")
+	if is_moving:
+		var direction = global_position.direction_to(movement_target)
+		var distance = global_position.distance_to(movement_target)
+		
+		if distance <= stop_distance:
+			is_moving = false
+			velocity = Vector2.ZERO
 		else:
-			sprite.play("move_down" if mov.y > 0 else "move_up")
+			last_movement = direction
+			if abs(direction.x) > abs(direction.y):
+				sprite.play("move_right" if direction.x > 0 else "move_left")
+			else:
+				sprite.play("move_down" if direction.y > 0 else "move_up")
+			velocity = direction.normalized() * movement_speed
 	else:
 		if last_movement.x != 0:
 			sprite.play("idle_right" if last_movement.x > 0 else "idle_left")
 		else:
 			sprite.play("idle_down" if last_movement.y > 0 else "idle_up")
+		velocity = Vector2.ZERO
 	
-	velocity = mov.normalized()*movement_speed
 	move_and_slide()
 
+func _input(event):
+	if event.is_action_pressed("move_to_target"):
+		var mouse_pos = get_global_mouse_position()
+		movement_target = mouse_pos
+		is_moving = true
+	if event.is_action_pressed("attack_ice_spear"):
+		cast_attack("ice_spear")
+	if event.is_action_pressed("attack_tornado"):
+		cast_attack("tornado")
+	if event.is_action_pressed("attack_javelin"):
+		cast_attack("immolate")
+	if event.is_action_pressed("attack_lightning"):
+		cast_attack("lightning")
+
+func cast_attack(weapon_type):
+	match weapon_type:
+		"ice_spear":
+			if icespear_cooldown <= 0 and icespear_level > 0:
+				var ammo_count = icespear_baseammo + additional_attacks
+				for i in range(ammo_count):
+					spawn_ice_spear()
+				icespear_cooldown = icespear_attackspeed * (1 - spell_cooldown)
+		"tornado":
+			if tornado_cooldown <= 0 and tornado_level > 0:
+				var ammo_count = tornado_baseammo + additional_attacks
+				for i in range(ammo_count):
+					spawn_tornado()
+				tornado_cooldown = tornado_attackspeed * (1 - spell_cooldown)
+		"immolate":
+			if immolate_cooldown <= 0 and immolate_level > 0:
+				activate_immolate()
+				immolate_cooldown = immolate_attackspeed * (1 - spell_cooldown)
+		"lightning":
+			if lightning_cooldown <= 0 and lightning_level > 0:
+				var ammo_count = lightning_baseammo + additional_attacks
+				for i in range(ammo_count):
+					spawn_lightning()
+				lightning_cooldown = lightning_attackspeed * (1 - spell_cooldown)
+
+func _physics_process(delta):
+	if icespear_cooldown > 0:
+		icespear_cooldown -= delta
+	if tornado_cooldown > 0:
+		tornado_cooldown -= delta
+	if immolate_cooldown > 0:
+		immolate_cooldown -= delta
+	if lightning_cooldown > 0:
+		lightning_cooldown -= delta
+	movement()
+
+func spawn_ice_spear():
+	var target_pos = get_random_target()
+	var icespear_attack = iceSpear.instantiate()
+	icespear_attack.position = position
+	icespear_attack.target = target_pos
+	icespear_attack.level = icespear_level
+	add_child(icespear_attack)
+
+func spawn_tornado():
+	var tornado_attack = tornado.instantiate()
+	tornado_attack.position = position
+	tornado_attack.last_movement = last_movement
+	tornado_attack.level = tornado_level
+	add_child(tornado_attack)
+
+func trigger_javelin_attack():
+	if javelinBase.get_child_count() > 0:
+		javelinBase.get_children()[0].add_paths()
+
+func spawn_lightning():
+	var target = get_random_target()
+	if target != Vector2.UP:
+		var lightning_attack = lightning.instantiate()
+		lightning_attack.position = target
+		lightning_attack.level = lightning_level
+		add_child(lightning_attack)
+
+func activate_immolate():
+	if immolate_active and is_instance_valid(immolate_aura):
+		immolate_aura.queue_free()
+	
+	var immolate_attack = immolate.instantiate()
+	immolate_attack.position = global_position
+	immolate_attack.level = immolate_level
+	add_child(immolate_attack)
+	immolate_aura = immolate_attack
+	immolate_active = true
+	
+	match immolate_level:
+		1:
+			immolate_speed_boost = 20.0
+		2:
+			immolate_speed_boost = 35.0
+		3:
+			immolate_speed_boost = 50.0
+		4:
+			immolate_speed_boost = 70.0
+	
+	movement_speed += immolate_speed_boost
+
 func attack():
-	if icespear_level > 0:
-		iceSpearTimer.wait_time = icespear_attackspeed * (1-spell_cooldown)
-		if iceSpearTimer.is_stopped():
-			iceSpearTimer.start()
-	if tornado_level > 0:
-		tornadoTimer.wait_time = tornado_attackspeed * (1-spell_cooldown)
-		if tornadoTimer.is_stopped():
-			tornadoTimer.start()
-	if javelin_level > 0:
-		spawn_javelin()
-	if lightning_level > 0:
-		lightningTimer.wait_time = lightning_attackspeed * (1-spell_cooldown)
-		if lightningTimer.is_stopped():
-			lightningTimer.start()
 	if hollowpurple_level > 0:
 		ensure_hollow_purple()
 	if willowhisp_level > 0:
 		refresh_will_o_whisps()
+	if javelin_level > 0:
+		spawn_javelin()
 
 func screen_shake(duration: float, intensity: float):
 	var camera = $Camera2D
@@ -176,41 +303,6 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	
 	if hp <= 0:
 		death()
-
-func _on_ice_spear_timer_timeout():
-	icespear_ammo += icespear_baseammo + additional_attacks
-	iceSpearAttackTimer.start()
-
-
-func _on_ice_spear_attack_timer_timeout():
-	if icespear_ammo > 0:
-		var icespear_attack = iceSpear.instantiate()
-		icespear_attack.position = position
-		icespear_attack.target = get_random_target()
-		icespear_attack.level = icespear_level
-		add_child(icespear_attack)
-		icespear_ammo -= 1
-		if icespear_ammo > 0:
-			iceSpearAttackTimer.start()
-		else:
-			iceSpearAttackTimer.stop()
-
-func _on_tornado_timer_timeout():
-	tornado_ammo += tornado_baseammo + additional_attacks
-	tornadoAttackTimer.start()
-
-func _on_tornado_attack_timer_timeout():
-	if tornado_ammo > 0:
-		var tornado_attack = tornado.instantiate()
-		tornado_attack.position = position
-		tornado_attack.last_movement = last_movement
-		tornado_attack.level = tornado_level
-		add_child(tornado_attack)
-		tornado_ammo -= 1
-		if tornado_ammo > 0:
-			tornadoAttackTimer.start()
-		else:
-			tornadoAttackTimer.stop()
 
 func spawn_javelin():
 	var get_javelin_total = javelinBase.get_child_count()
@@ -260,24 +352,6 @@ func refresh_will_o_whisps():
 		var orb = willowhisp_orbs[i]
 		if is_instance_valid(orb) and orb.has_method("configure_orb"):
 			orb.configure_orb(self, i, total_orbs, willowhisp_level, willowhisp_hit_cooldown)
-
-func _on_lightning_timer_timeout():
-	lightning_ammo += lightning_baseammo + additional_attacks
-	lightningAttackTimer.start()
-
-func _on_lightning_attack_timer_timeout():
-	if lightning_ammo > 0:
-		var target = get_random_target()
-		if target != Vector2.UP:
-			var lightning_attack = lightning.instantiate()
-			lightning_attack.position = target
-			lightning_attack.level = lightning_level
-			add_child(lightning_attack)
-		lightning_ammo -= 1
-		if lightning_ammo > 0:
-			lightningAttackTimer.start()
-		else:
-			lightningAttackTimer.stop()
 
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -393,6 +467,16 @@ func upgrade_character(upgrade):
 			lightning_level = 3
 		"lightning4":
 			lightning_level = 4
+		"immolate1":
+			immolate_level = 1
+			immolate_baseammo += 1
+		"immolate2":
+			immolate_level = 2
+		"immolate3":
+			immolate_level = 3
+		"immolate4":
+			immolate_level = 4
+			immolate_baseammo += 1
 		"hollowpurple1":
 			hollowpurple_level = 1
 		"hollowpurple2":

@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Player/GUI/sprite_skill_bar.gd" id="1_script"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/icespear_slot.tres" id="2_slot_ice"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/tornado_slot.tres" id="3_slot_tornado"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/immolate_slot.tres" id="4_slot_immolate"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/lightning_slot.tres" id="5_slot_lightning"]
+
+[node name="SpriteSkillBar" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -90.0
+offset_right = -2.0
+offset_bottom = 90.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_script")
+slots = [ExtResource("2_slot_ice"), ExtResource("3_slot_tornado"), ExtResource("4_slot_immolate"), ExtResource("5_slot_lightning")]
+
+[node name="Slots" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -84.0
+offset_right = 21.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1

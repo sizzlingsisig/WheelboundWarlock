@@ -133,6 +133,38 @@ const UPGRADES = {
 		"prerequisite": ["lightning3"],
 		"type": "weapon"
 	},
+	"immolate1": {
+		"icon": SPECIAL_WEAPON_PATH + "fire_column_medium/fire_column_medium_1.png",
+		"displayname": "Immolate",
+		"details": "Surround yourself in fire - damages enemies on contact and increases speed",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
+	"immolate2": {
+		"icon": SPECIAL_WEAPON_PATH + "fire_column_medium/fire_column_medium_1.png",
+		"displayname": "Immolate",
+		"details": "Increased speed and +1 damage",
+		"level": "Level: 2",
+		"prerequisite": ["immolate1"],
+		"type": "weapon"
+	},
+	"immolate3": {
+		"icon": SPECIAL_WEAPON_PATH + "fire_column_medium/fire_column_medium_1.png",
+		"displayname": "Immolate",
+		"details": "Larger area and longer duration",
+		"level": "Level: 3",
+		"prerequisite": ["immolate2"],
+		"type": "weapon"
+	},
+	"immolate4": {
+		"icon": SPECIAL_WEAPON_PATH + "fire_column_medium/fire_column_medium_1.png",
+		"displayname": "Immolate",
+		"details": "Maximum damage, speed, and area",
+		"level": "Level: 4",
+		"prerequisite": ["immolate3"],
+		"type": "weapon"
+	},
 	"hollowpurple1": {
 		"icon": SPECIAL_WEAPON_PATH + "Dark-Bolt.png",
 		"displayname": "Hollow Purple",
