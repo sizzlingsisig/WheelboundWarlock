@@ -44,6 +44,8 @@ func _spawn_from_pool(spawn_info_res: Resource, start_pos: Vector2) -> Node:
 			enemy.global_position = start_pos
 			enemy.hp = enemy.max_hp
 			enemy.visible = true
+			if enemy.has_method("reset_state"):
+				enemy.reset_state()
 			return enemy
 	
 	var new_enemy = spawn_info_res.instantiate()
