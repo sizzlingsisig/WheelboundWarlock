@@ -418,6 +418,86 @@ const UPGRADES = {
 		"prerequisite": ["ring1"],
 		"type": "upgrade"
 	},
+	"magnet1": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 160, 16, 16),
+		"displayname": "Hand of Midas",
+		"details": "Increases XP gem pickup range by 25",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "upgrade"
+	},
+	"magnet2": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 160, 16, 16),
+		"displayname": "Hand of Midas",
+		"details": "Increases XP gem pickup range by an additional 25",
+		"level": "Level: 2",
+		"prerequisite": ["magnet1"],
+		"type": "upgrade"
+	},
+	"magnet3": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 160, 16, 16),
+		"displayname": "Hand of Midas",
+		"details": "Increases XP gem pickup range by an additional 25",
+		"level": "Level: 3",
+		"prerequisite": ["magnet2"],
+		"type": "upgrade"
+	},
+	"magnet4": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 160, 16, 16),
+		"displayname": "Hand of Midas",
+		"details": "Increases XP gem pickup range by an additional 50",
+		"level": "Level: 4",
+		"prerequisite": ["magnet3"],
+		"type": "upgrade"
+	},
+	"heart troll1": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 144, 16, 16),
+		"displayname": "Heart of a Troll",
+		"details": "Regenerates 0.5 HP per second",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "upgrade"
+	},
+	"heart troll2": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 144, 16, 16),
+		"displayname": "Heart of a Troll",
+		"details": "Regenerates an additional 0.5 HP per second",
+		"level": "Level: 2",
+		"prerequisite": ["heart troll1"],
+		"type": "upgrade"
+	},
+	"heart troll3": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 144, 16, 16),
+		"displayname": "Heart of a Troll",
+		"details": "Regenerates an additional 1 HP per second",
+		"level": "Level: 3",
+		"prerequisite": ["heart troll2"],
+		"type": "upgrade"
+	},
+	"heart troll4": {
+		"icon": SPECIAL_WEAPON_PATH + "spritesheets.png",
+		"sprite_sheet": SPRITESHEET_PATH,
+		"sprite_region": Rect2i(0, 144, 16, 16),
+		"displayname": "Heart of a Troll",
+		"details": "Regenerates an additional 1.5 HP per second",
+		"level": "Level: 4",
+		"prerequisite": ["heart troll3"],
+		"type": "upgrade"
+	},
 	"food": {
 		"icon": ICON_PATH + "chunk.png",
 		"displayname": "Food",

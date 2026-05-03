@@ -35,6 +35,8 @@ var collected_upgrades = []
 var upgrade_options = []
 var armor = 0
 var speed = 0
+var magnet_radius = 150.0
+var hp_regen = 0.0
 var spell_cooldown = 0
 var spell_size = 0
 var additional_attacks = 0
@@ -217,6 +219,9 @@ func _physics_process(delta):
 		immolate_cooldown -= delta
 	if lightning_cooldown > 0:
 		lightning_cooldown -= delta
+	if hp_regen > 0 and hp < maxhp:
+		hp = min(hp + hp_regen * delta, maxhp)
+		healthBar.value = hp
 	movement()
 
 func spawn_ice_spear():
@@ -408,7 +413,7 @@ func calculate_experiencecap():
 	if experience_level < 20:
 		exp_cap = experience_level*5
 	elif experience_level < 40:
-		exp_cap + 95 * (experience_level-19)*8
+		exp_cap = 95 + (experience_level-19)*8
 	else:
 		exp_cap = 255 + (experience_level-39)*12
 		
@@ -519,6 +524,18 @@ func upgrade_character(upgrade):
 			spell_cooldown += 0.05
 		"ring1","ring2":
 			additional_attacks += 1
+		"magnet1","magnet2","magnet3":
+			magnet_radius += 25
+		"magnet4":
+			magnet_radius += 50
+		"heart troll1":
+			hp_regen += 0.5
+		"heart troll2":
+			hp_regen += 0.5
+		"heart troll3":
+			hp_regen += 1.0
+		"heart troll4":
+			hp_regen += 1.5
 		"food":
 			hp += 20
 			hp = clamp(hp,0,maxhp)
