@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcyka5e06knff"]
+[gd_scene format=3 uid="uid://dcyka5e06knff"]
 
-[ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
-[ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_xdjxl"]
+[ext_resource type="Script" uid="uid://dkuevxic02mb7" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
+[ext_resource type="Texture2D" uid="uid://b4hvh14qebrx2" path="res://assets/kalboWheelchair/Menu.png" id="4_menu"]
 
-[node name="Menu" type="Control"]
+[node name="Menu" type="Control" unique_id=97852905]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,23 +13,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oi0p3")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 673.0
-offset_bottom = 382.0
-color = Color(0.572549, 0.207843, 0.168627, 1)
+[node name="Background" type="Sprite2D" parent="." unique_id=670904570]
+position = Vector2(322.5, 207.49998)
+scale = Vector2(0.23582849, 0.27148435)
+texture = ExtResource("4_menu")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 100.0
-theme_override_fonts/font = ExtResource("1_xdjxl")
-theme_override_font_sizes/font_size = 72
-text = "Survivors Clone #13247"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="btn_play" parent="." instance=ExtResource("3_kwsdd")]
+[node name="btn_play" parent="." unique_id=1674152987 instance=ExtResource("3_kwsdd")]
 layout_mode = 0
 offset_left = 280.0
 offset_top = 250.0
@@ -37,7 +26,7 @@ offset_right = 360.0
 offset_bottom = 280.0
 text = "Play"
 
-[node name="btn_exit" parent="." instance=ExtResource("3_kwsdd")]
+[node name="btn_exit" parent="." unique_id=1203113502 instance=ExtResource("3_kwsdd")]
 layout_mode = 0
 offset_left = 280.0
 offset_top = 290.0
