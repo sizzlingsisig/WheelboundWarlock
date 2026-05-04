@@ -16,8 +16,29 @@ signal changetime(time)
 func _ready() -> void:
 	connect("changetime", Callable(player, "change_time"))
 	add_to_group("enemy_spawner")
-	spawn_boss()
-	boss_spawned = true
+	_spawn_initial_enemies()
+	_check_bosstest_mode()
+
+func _check_bosstest_mode() -> void:
+	if GameState.bosstest_mode and boss_scene != null:
+		print("Bosstest mode: spawning boss")
+		spawn_boss()
+
+func _spawn_initial_enemies() -> void:
+	var enemy_spawns: Array = spawns
+	for i in enemy_spawns:
+		if i.time_start == 0:
+			var counter: int = 0
+			while counter < i.enemy_num:
+				var spawn_pos: Vector2 = get_random_position()
+				var new_enemy = _spawn_from_pool(i.enemy, spawn_pos)
+				counter += 1
+	
+	if time == 300 and not boss_spawned and boss_scene != null:
+		spawn_boss()
+		boss_spawned = true
+	
+	emit_signal("changetime", time)
 
 func _on_timer_timeout() -> void:
 	time += 1
@@ -87,6 +108,11 @@ func return_enemy_to_pool(enemy: Node) -> void:
 		enemy.queue_free()
 
 func get_random_position() -> Vector2:
+	var bounds = _get_world_bounds_rect()
+	if bounds.size != Vector2.ZERO:
+		var x = randf_range(bounds.position.x, bounds.position.x + bounds.size.x)
+		var y = randf_range(bounds.position.y, bounds.position.y + bounds.size.y)
+		return Vector2(x, y)
 	var vpr: Vector2 = get_viewport_rect().size * randf_range(1.1, 1.4)
 	var top_left: Vector2 = Vector2(player.global_position.x - vpr.x / 2, player.global_position.y - vpr.y / 2)
 	var top_right: Vector2 = Vector2(player.global_position.x + vpr.x / 2, player.global_position.y - vpr.y / 2)
@@ -113,3 +139,17 @@ func get_random_position() -> Vector2:
 	var x_spawn: float = randf_range(spawn_pos1.x, spawn_pos2.x)
 	var y_spawn: float = randf_range(spawn_pos1.y, spawn_pos2.y)
 	return Vector2(x_spawn, y_spawn)
+
+func _get_world_bounds_rect() -> Rect2:
+	var bounds_node = get_tree().get_first_node_in_group("world_bounds")
+	if not is_instance_valid(bounds_node):
+		return Rect2()
+	var shape_node = bounds_node.get_node_or_null("CollisionShape2D")
+	if shape_node == null:
+		return Rect2()
+	var shape = shape_node.shape
+	if shape == null or not shape is RectangleShape2D:
+		return Rect2()
+	var size = shape.size
+	var origin = bounds_node.global_position - (size * 0.5)
+	return Rect2(origin, size)

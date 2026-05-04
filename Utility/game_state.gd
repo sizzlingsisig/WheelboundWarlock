@@ -3,6 +3,7 @@ extends Node
 enum State { MENU, PLAYING, UPGRADE, GAME_OVER, WIN }
 
 var current_state: State = State.MENU
+var bosstest_mode: bool = false
 
 signal state_changed(new_state: State)
 
