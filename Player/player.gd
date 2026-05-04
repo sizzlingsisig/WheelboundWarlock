@@ -187,7 +187,7 @@ func _physics_process(delta: float) -> void:
 	combat_component.tick_cooldowns(delta)
 	progression_component.tick_regen(delta)
 	movement()
-	ui_component.update_health_bar_position()
+	# ui_component.update_health_bar_position()  # DISABLED - positioning broken
 
 func spawn_ice_spear() -> void:
 	combat_component.spawn_ice_spear()
