@@ -58,7 +58,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"javelin1": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
+		"icon": WEAPON_PATH + "javelin_3_new.png",
 		"displayname": "Javelin",
 		"details": "A magical javelin will follow you attacking enemies in a straight line",
 		"level": "Level: 1",
@@ -66,7 +66,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"javelin2": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
+		"icon": WEAPON_PATH + "javelin_3_new.png",
 		"displayname": "Javelin",
 		"details": "The javelin will now attack an additional enemy per attack",
 		"level": "Level: 2",
@@ -74,7 +74,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"javelin3": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
+		"icon": WEAPON_PATH + "javelin_3_new.png",
 		"displayname": "Javelin",
 		"details": "The javelin will attack another additional enemy per attack",
 		"level": "Level: 3",

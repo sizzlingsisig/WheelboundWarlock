@@ -1,18 +1,18 @@
-# Kalbo vs the World
+# Wheelbound Warlock: Person with this ability
 
 A Vampire Survivors-style survival game built in Godot 4.
 
 ## Game Description
 
-Survive waves of enemies, collect experience gems, level up, and defeat the boss to win! Choose from multiple weapons and upgrades to build your character.
+Survive waves of supernatural enemies, collect arcane essences, and master forbidden magic to defeat the Ancient Warlock! Choose from multiple spells and upgrades to forge your magical destiny.
 
 ## Mechanical Twist
 
-**Manual Attack Control** - Unlike traditional Vampire Survivors where weapons fire automatically, this game requires the player to manually trigger each weapon attack. This creates a unique gameplay experience where the player must actively manage attack timing while dodging enemies.
+**Manual Spell Casting** - Unlike traditional Vampire Survivors where weapons fire automatically, this game requires the player to manually trigger each spell attack. This creates a unique gameplay experience where the player must actively manage spell timing while dodging enemies.
 
 ### How It Works
-- Each weapon has its own key binding
-- Player must press the correct key to fire each weapon
+- Each spell has its own key binding
+- Player must press the correct key to cast each spell
 - Strategic timing and positioning become crucial
 - Creates a more action-oriented experience
 
@@ -29,10 +29,10 @@ Survive waves of enemies, collect experience gems, level up, and defeat the boss
 
 ## Features
 
-### Weapons (7 total)
+### Weapons
 - **Ice Spear** - Projectile that seeks enemies
 - **Tornado** - Area of effect damage around player
-- **Javelin** - Orbiting javelin that attacks automatically
+- **Javelin** - Orbiting javelin that attacks enemies
 - **Lightning** - Strikes nearest enemy with chains
 - **Immolate** - Fire aura that damages on contact
 - **Hollow Purple** - Persistent damage zone around player
@@ -43,50 +43,46 @@ Survive waves of enemies, collect experience gems, level up, and defeat the boss
 - Kobold (Strong) - More HP, more damage
 - Juggernaut - Tanky, slow
 - Cyclops - Large, high damage
-- Alien (Boss) - Final boss with multiple attack patterns
+- Giant Amoeba (Boss) - Final boss with multiple attack patterns
 
 ### Boss Abilities
 - Charge Attack - Dashes at player
-- Projectile Burst - 8 radial projectiles
-- Ground Slam - AOE damage with warning
 - Teleport - Teleports behind player
-- Minion Spawn - Summons weak enemies
-- Enrage Mode - At 50% HP, attacks become faster
+- Slam - Close-range damage attack
 
 ### Systems
 - XP and Leveling with upgrade selection
-- Object pooling for enemies and projectiles
+- Object pooling for enemies
 - Data-driven weapon configuration
 - Signal-driven architecture
 - FSM-based game states (Menu, Playing, Upgrade, Win/Lose)
-
-## Architecture
-
-This project demonstrates professional game architecture:
-- **Composition over inheritance** in weapon system
-- **Object pooling** for high-frequency entities (enemies, projectiles)
-- **Hierarchical FSM** for game state and enemy behavior
-- **Data-driven design** via Resource-based configurations
-- **Signal-driven communication** between systems
-
-## Known Issues / Limitations
-
-- Projectile pooling not fully implemented (weapons spawn new instances)
-- No save/load system
-- Single difficulty (no easy/hard mode)
-- Game timer is 5 minutes (shorter than typical Vampire Survivors)
-- Some visual placeholders exist
-
-## Tech Stack
-
-- Godot 4.x
-- GDScript
 
 ## How to Run
 
 1. Open the project in Godot 4
 2. Press F5 or click Play to run
 3. Select "Play" from the main menu
+
+## Tech Stack
+
+- Godot 4.x
+- GDScript
+
+## Known Issues / Limitations
+
+- No save/load system
+- Single difficulty (no easy/hard mode)
+- Game timer is 5 minutes (shorter than typical Vampire Survivors)
+- Some visual placeholders exist
+
+## Architecture
+
+This project demonstrates professional game architecture:
+- Composition over inheritance in weapon system
+- Object pooling for high-frequency entities (enemies, projectiles)
+- Hierarchical FSM for game state and enemy behavior
+- Data-driven design via Resource-based configurations
+- Signal-driven communication between systems
 
 ## Credits
 
