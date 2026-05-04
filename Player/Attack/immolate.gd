@@ -11,7 +11,12 @@ var time_passed = 0.0
 @onready var hit_area = $HitArea
 
 func _ready():
+	pass
+
+func on_spawn() -> void:
 	update_immolate(level)
+	enemy_next_hit.clear()
+	time_passed = 0.0
 	$DurationTimer.wait_time = duration
 	$DurationTimer.start()
 
@@ -80,9 +85,28 @@ func _draw():
 func _on_duration_timer_timeout():
 	print("Immolate expired!")
 	remove_speed_boost()
-	queue_free()
+	_return_to_pool()
 
 func remove_speed_boost():
 	if is_instance_valid(player):
 		player.movement_speed -= player.immolate_speed_boost
 		player.immolate_active = false
+
+func reset_state() -> void:
+	enemy_next_hit.clear()
+	time_passed = 0.0
+	var timer = get_node_or_null("DurationTimer")
+	if timer:
+		timer.stop()
+
+func on_despawn() -> void:
+	var timer = get_node_or_null("DurationTimer")
+	if timer:
+		timer.stop()
+
+func _return_to_pool() -> void:
+	var pool = get_tree().get_first_node_in_group("projectile_pool")
+	if pool:
+		pool.return_projectile("immolate", self)
+	else:
+		queue_free()

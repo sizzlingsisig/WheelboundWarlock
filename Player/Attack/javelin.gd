@@ -146,3 +146,26 @@ func _on_reset_pos_timer_timeout():
 			reset_pos.y += 50
 		3:
 			reset_pos.y -= 50
+
+func reset_state() -> void:
+	level = 1
+	hp = 9999
+	speed = 200.0
+	damage = 10
+	knockback_amount = 100
+	paths = 1
+	attack_size = 1.0
+	attack_speed = 5.0
+	target = Vector2.ZERO
+	target_array = []
+	angle = Vector2.ZERO
+	reset_pos = Vector2.ZERO
+	scale = Vector2.ONE
+	position = Vector2(-1000, -1000)
+
+func _return_to_pool() -> void:
+	var pool = get_tree().get_first_node_in_group("projectile_pool")
+	if pool:
+		pool.return_projectile("javelin", self)
+	else:
+		queue_free()

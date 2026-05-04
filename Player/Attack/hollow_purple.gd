@@ -16,7 +16,13 @@ var pulse_time = 0.0
 @onready var collision = $CollisionShape2D
 
 func _ready():
+	pass
+
+func on_spawn() -> void:
 	update_hollow_purple(level)
+	enemy_next_hit.clear()
+	rotation_angle = 0.0
+	pulse_time = 0.0
 
 func update_hollow_purple(new_level):
 	level = new_level
@@ -36,10 +42,12 @@ func update_hollow_purple(new_level):
 		4:
 			damage = 9
 			attack_size = 2.0 * (1 + spell_size)
-	if collision.shape is CircleShape2D:
+	if collision and collision.shape is CircleShape2D:
 		collision.shape.radius = BASE_RADIUS * attack_size
 
 func _physics_process(delta):
+	if is_instance_valid(player):
+		global_position = player.global_position
 	rotation_angle += delta * 0.8
 	pulse_time += delta
 	queue_redraw()
@@ -79,3 +87,15 @@ func _draw():
 	
 	var outer_glow = Color(0.7, 0.3, 0.8, 0.4)
 	draw_arc(Vector2.ZERO, r + 8, 0.0, TAU, 32, outer_glow, 2.0)
+
+func _return_to_pool() -> void:
+	var pool = get_tree().get_first_node_in_group("projectile_pool")
+	if pool:
+		pool.return_projectile("hollow_purple", self)
+	else:
+		queue_free()
+
+func reset_state() -> void:
+	enemy_next_hit.clear()
+	rotation_angle = 0.0
+	pulse_time = 0.0

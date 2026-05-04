@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
 [ext_resource type="AudioStream" uid="uid://bbufl4r1ou1rw" path="res://Audio/Music/battleThemeA.mp3" id="10_rk3we"]
 [ext_resource type="Script" uid="uid://bkwemuaxmlxl2" path="res://Audio/Music/snd_Music.gd" id="11_ovtx6"]
+[ext_resource type="PackedScene" uid="uid://v0ikepquckfl" path="res://Enemy/enemy_alien.tscn" id="12_boss"]
+[ext_resource type="Script" uid="uid://cp8qwn27cwe1r" path="res://Utility/projectile_pool.gd" id="13_pool"]
 
 [sub_resource type="Resource" id="Resource_03m25"]
 script = ExtResource("5_jj7s8")
@@ -88,10 +90,21 @@ region_rect = Rect2(-4000, -4000, 4000, 4000)
 [node name="Player" parent="." unique_id=1195499424 instance=ExtResource("2_40uwv")]
 scale = Vector2(0.5, 0.5)
 
+[node name="SpriteSkillBar" parent="Player/GUILayer/GUI" parent_id_path=PackedInt32Array(1195499424, 1197244981) index="7"]
+layout_mode = 1
+anchors_preset = 6
+
+[node name="PauseMenu" parent="Player/GUILayer/GUI" parent_id_path=PackedInt32Array(1195499424, 1197244981) index="8"]
+layout_mode = 1
+
 [node name="EnemySpawner" parent="." unique_id=1425355489 instance=ExtResource("3_p01g4")]
 spawns = Array[ExtResource("5_jj7s8")]([SubResource("Resource_03m25"), SubResource("Resource_ij20a"), SubResource("Resource_68oxv"), SubResource("Resource_l8y0x"), SubResource("Resource_daq1w"), SubResource("Resource_0gpiy"), SubResource("Resource_4teun"), SubResource("Resource_rx6id"), SubResource("Resource_t2np8")])
+boss_scene = ExtResource("12_boss")
 
 [node name="Loot" type="Node2D" parent="." unique_id=1626945856 groups=["loot"]]
+
+[node name="ProjectilePool" type="Node" parent="." unique_id=177880018 groups=["projectile_pool"]]
+script = ExtResource("13_pool")
 
 [node name="snd_Music" type="AudioStreamPlayer" parent="." unique_id=1246408374]
 process_mode = 3

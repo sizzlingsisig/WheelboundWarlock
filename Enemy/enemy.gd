@@ -2,36 +2,36 @@ extends CharacterBody2D
 
 enum State { SPAWN, MOVE, DEAD }
 
-@export var movement_speed = 20.0
-@export var hp = 10
-@export var max_hp = 10
-@export var knockback_recovery = 3.5
-@export var experience = 1
-@export var enemy_damage = 1
+@export var movement_speed: float = 20.0
+@export var hp: float = 10
+@export var max_hp: float = 10
+@export var knockback_recovery: float = 3.5
+@export var experience: int = 1
+@export var enemy_damage: float = 1
 
 var current_state: State = State.SPAWN
 var state_timer: float = 0.0
-var knockback = Vector2.ZERO
+var knockback: Vector2 = Vector2.ZERO
 
-@onready var player = get_tree().get_first_node_in_group("player")
-@onready var loot_base = get_tree().get_first_node_in_group("loot")
-@onready var sprite = $Sprite2D
-@onready var anim = $AnimationPlayer
-@onready var snd_hit = $snd_hit
-@onready var hitBox = $HitBox
+@onready var player: Node = get_tree().get_first_node_in_group("player")
+@onready var loot_base: Node = get_tree().get_first_node_in_group("loot")
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var snd_hit: AudioStreamPlayer2D = $snd_hit
+@onready var hitBox: Area2D = $HitBox
 
-var death_anim = preload("res://Enemy/explosion.tscn")
-var exp_gem = preload("res://Objects/experience_gem.tscn")
+var death_anim: PackedScene = preload("res://Enemy/explosion.tscn")
+var exp_gem: PackedScene = preload("res://Objects/experience_gem.tscn")
 
-signal remove_from_array(object)
+signal remove_from_array(object: Node)
 
-func _ready():
+func _ready() -> void:
 	current_state = State.SPAWN
 	state_timer = 0.0
 	anim.play("walk")
 	hitBox.damage = enemy_damage
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	match current_state:
 		State.SPAWN:
 			_update_spawn(delta)
@@ -47,7 +47,7 @@ func _update_spawn(delta: float) -> void:
 
 func _update_move(delta: float) -> void:
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
-	var direction = global_position.direction_to(player.global_position)
+	var direction: Vector2 = global_position.direction_to(player.global_position)
 	velocity = direction * movement_speed
 	velocity += knockback
 	move_and_slide()
@@ -57,7 +57,7 @@ func _update_move(delta: float) -> void:
 	elif direction.x < -0.1:
 		sprite.flip_h = false
 
-func death():
+func death() -> void:
 	if current_state == State.DEAD:
 		return
 	current_state = State.DEAD
@@ -72,12 +72,12 @@ func death():
 	loot_base.call_deferred("add_child", new_gem)
 	return_to_pool()
 
-func return_to_pool():
+func return_to_pool() -> void:
 	var spawner = get_tree().get_first_node_in_group("enemy_spawner")
 	if spawner:
 		spawner.return_enemy_to_pool(self)
 
-func _on_hurt_box_hurt(damage, angle, knockback_amount):
+func _on_hurt_box_hurt(damage: float, angle: Vector2, knockback_amount: float) -> void:
 	if current_state == State.DEAD:
 		return
 
@@ -97,7 +97,7 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	else:
 		snd_hit.play()
 
-func reset_state():
+func reset_state() -> void:
 	current_state = State.SPAWN
 	state_timer = 0.0
 	hp = max_hp
