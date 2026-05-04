@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://pool_manager_scene"]
+
+[ext_resource type="Script" path="res://Utility/enemy_pool_manager.gd" id="1_enemy_pool"]
+[ext_resource type="Script" path="res://Utility/projectile_pool_manager.gd" id="2_proj_pool"]
+
+[node name="PoolManager" type="Node" groups=["enemy_pool", "projectile_pool"]]
+script = ExtResource("1_enemy_pool")
+
+[node name="ProjectilePoolManager" type="Node" parent="." groups=["projectile_pool"]]
+script = ExtResource("2_proj_pool")

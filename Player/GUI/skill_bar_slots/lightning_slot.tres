@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillBarSlotData" format=3 uid="uid://dds64v05cf2aq"]
+
+[ext_resource type="Script" uid="uid://dhw33ds3ltf2p" path="res://Player/GUI/skill_bar_slot_data.gd" id="1_slot_data"]
+[ext_resource type="Texture2D" uid="uid://bqw16s1tqlx5r" path="res://assets/kalboWheelchair/lightningicon.png" id="2_icon"]
+[ext_resource type="Texture2D" uid="uid://i7hvxn1shie1" path="res://assets/kalboWheelchair/spritesheets.png" id="3_spritesheet"]
+
+[resource]
+script = ExtResource("1_slot_data")
+weapon_id = "lightning"
+icon = ExtResource("2_icon")
+sprite_sheet = ExtResource("3_spritesheet")
+sprite_region = Rect2i(0, 16, 16, 16)
+key_label = "R"
+icon_scale = 1.0

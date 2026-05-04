@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_data.gd" id=1]
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_level_data.gd" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource(2)
+level = 1
+description = "Surround yourself in fire - damages enemies on contact and increases speed"
+damage = 3.0
+duration = 5.0
+attack_size = 1.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource(2)
+level = 2
+description = "Increased speed and +1 damage"
+damage = 4.0
+duration = 6.0
+attack_size = 1.0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource(2)
+level = 3
+description = "Larger area and longer duration"
+damage = 5.0
+duration = 7.0
+attack_size = 1.0
+
+[sub_resource type="Resource" id=4]
+script = ExtResource(2)
+level = 4
+description = "Maximum damage, speed, and area"
+damage = 7.0
+duration = 8.0
+attack_size = 1.0
+
+[resource]
+script = ExtResource(1)
+id = "immolate"
+display_name = "Immolate"
+icon_path = "res://assets/kalboWheelchair/fire_column_medium/fire_column_medium_1.png"
+sprite_sheet_path = "res://assets/kalboWheelchair/spritesheets.png"
+sprite_region = Rect2i(64, 0, 16, 16)
+scene_path = "res://Player/Attack/immolate.tscn"
+levels = [SubResource(1), SubResource(2), SubResource(3), SubResource(4)]

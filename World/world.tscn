@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://du6qbgqucaqov"]
+
+[ext_resource type="Texture2D" uid="uid://b6umklllf2jsl" path="res://Textures/dirt_full_new.png" id="1_3v41d"]
+[ext_resource type="PackedScene" uid="uid://dncgepmkc4jf4" path="res://Player/player.tscn" id="2_40uwv"]
+[ext_resource type="PackedScene" uid="uid://ba2claihwes2y" path="res://Utility/enemy_spawner.tscn" id="3_p01g4"]
+[ext_resource type="PackedScene" uid="uid://gvm5jcbbgwdv" path="res://Enemy/enemy_kobold_weak.tscn" id="4_ee8bm"]
+[ext_resource type="Script" uid="uid://b88gb022b3qno" path="res://Utility/spawn_info.gd" id="5_jj7s8"]
+[ext_resource type="PackedScene" uid="uid://bbvhxvk65o8el" path="res://Enemy/enemy_kobold_strong.tscn" id="6_rumbx"]
+[ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_cyclops.tscn" id="7_unri0"]
+[ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ltymd"]
+[ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
+[ext_resource type="AudioStream" uid="uid://bbufl4r1ou1rw" path="res://Audio/Music/battleThemeA.mp3" id="10_rk3we"]
+[ext_resource type="Script" uid="uid://bkwemuaxmlxl2" path="res://Audio/Music/snd_Music.gd" id="11_ovtx6"]
+[ext_resource type="Script" uid="uid://cp8qwn27cwe1r" path="res://Utility/projectile_pool.gd" id="13_pool"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_world_bounds"]
+size = Vector2(3000, 3000)
+
+[sub_resource type="Resource" id="Resource_03m25"]
+script = ExtResource("5_jj7s8")
+time_end = 30
+enemy = ExtResource("4_ee8bm")
+enemy_num = 2
+
+[sub_resource type="Resource" id="Resource_ij20a"]
+script = ExtResource("5_jj7s8")
+time_start = 30
+time_end = 210
+enemy = ExtResource("4_ee8bm")
+enemy_num = 3
+
+[sub_resource type="Resource" id="Resource_68oxv"]
+script = ExtResource("5_jj7s8")
+time_start = 60
+time_end = 180
+enemy = ExtResource("6_rumbx")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_l8y0x"]
+script = ExtResource("5_jj7s8")
+time_start = 180
+time_end = 210
+enemy = ExtResource("7_unri0")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_daq1w"]
+script = ExtResource("5_jj7s8")
+time_start = 210
+time_end = 240
+enemy = ExtResource("6_rumbx")
+enemy_num = 2
+
+[sub_resource type="Resource" id="Resource_0gpiy"]
+script = ExtResource("5_jj7s8")
+time_start = 240
+time_end = 270
+enemy = ExtResource("7_unri0")
+enemy_num = 2
+
+[sub_resource type="Resource" id="Resource_4teun"]
+script = ExtResource("5_jj7s8")
+time_start = 240
+time_end = 240
+enemy = ExtResource("8_ltymd")
+enemy_num = 2
+
+[sub_resource type="Resource" id="Resource_rx6id"]
+script = ExtResource("5_jj7s8")
+time_start = 270
+time_end = 300
+enemy = ExtResource("6_rumbx")
+enemy_num = 5
+
+[node name="World" type="Node2D" unique_id=1095356192]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=281149430]
+texture_filter = 2
+texture_repeat = 2
+texture = ExtResource("1_3v41d")
+region_enabled = true
+region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="WorldBounds" type="Node2D" parent="." unique_id=2034541152 groups=["world_bounds"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds" unique_id=2034541153]
+shape = SubResource("RectangleShape2D_world_bounds")
+
+[node name="Player" parent="." unique_id=1195499424 instance=ExtResource("2_40uwv")]
+scale = Vector2(1.1, 1.1)
+
+[node name="SpriteSkillBar" parent="Player/GUILayer/GUI" parent_id_path=PackedInt32Array(1195499424, 1197244981) index="6"]
+layout_mode = 1
+anchors_preset = 6
+offset_left = -42.0
+offset_right = 0.0
+
+[node name="PauseMenu" parent="Player/GUILayer/GUI" parent_id_path=PackedInt32Array(1195499424, 1197244981) index="7"]
+layout_mode = 1
+
+[node name="EnemySpawner" parent="." unique_id=1425355489 instance=ExtResource("3_p01g4")]
+spawns = Array[ExtResource("5_jj7s8")]([SubResource("Resource_03m25"), SubResource("Resource_ij20a"), SubResource("Resource_68oxv"), SubResource("Resource_l8y0x"), SubResource("Resource_daq1w"), SubResource("Resource_0gpiy"), SubResource("Resource_4teun"), SubResource("Resource_rx6id")])
+boss_scene = ExtResource("9_xs42h")
+
+[node name="Loot" type="Node2D" parent="." unique_id=1626945856 groups=["loot"]]
+
+[node name="ProjectilePool" type="Node" parent="." unique_id=177880018 groups=["projectile_pool"]]
+script = ExtResource("13_pool")
+
+[node name="snd_Music" type="AudioStreamPlayer" parent="." unique_id=1246408374]
+process_mode = 3
+stream = ExtResource("10_rk3we")
+volume_db = -15.0
+autoplay = true
+script = ExtResource("11_ovtx6")
+
+[connection signal="playerdeath" from="Player" to="snd_Music" method="_on_player_playerdeath"]
+
+[editable path="Player"]
+[editable path="Player/HurtBox"]

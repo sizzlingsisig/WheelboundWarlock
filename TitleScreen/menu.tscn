@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dcyka5e06knff"]
+
+[ext_resource type="Script" uid="uid://dkuevxic02mb7" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
+[ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
+[ext_resource type="Texture2D" uid="uid://b4hvh14qebrx2" path="res://assets/kalboWheelchair/Menu.png" id="4_menu"]
+
+[node name="Menu" type="Control" unique_id=97852905]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oi0p3")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=670904570]
+position = Vector2(322.5, 207.49998)
+scale = Vector2(0.23582849, 0.27148435)
+texture = ExtResource("4_menu")
+
+[node name="btn_play" parent="." unique_id=1674152987 instance=ExtResource("3_kwsdd")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 250.0
+offset_right = 360.0
+offset_bottom = 280.0
+text = "Play"
+
+[node name="btn_exit" parent="." unique_id=1203113502 instance=ExtResource("3_kwsdd")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 290.0
+offset_right = 360.0
+offset_bottom = 320.0
+text = "Exit"
+
+[connection signal="pressed" from="btn_play" to="." method="_on_btn_play_click_end"]
+[connection signal="pressed" from="btn_exit" to="." method="_on_btn_exit_click_end"]

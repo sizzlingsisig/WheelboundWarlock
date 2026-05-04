@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_data.gd" id=1]
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_level_data.gd" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource(2)
+level = 1
+description = "A tornado is created and random heads somewhere in the players direction"
+hp = 9999
+damage = 5.0
+speed = 100.0
+knockback_amount = 100.0
+attack_size = 1.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource(2)
+level = 2
+description = "An additional Tornado is created"
+hp = 9999
+damage = 5.0
+speed = 100.0
+knockback_amount = 100.0
+attack_size = 1.0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource(2)
+level = 3
+description = "The Tornado cooldown is reduced by 0.5 seconds"
+hp = 9999
+damage = 5.0
+speed = 100.0
+knockback_amount = 100.0
+attack_size = 1.0
+
+[sub_resource type="Resource" id=4]
+script = ExtResource(2)
+level = 4
+description = "An additional tornado is created and the knockback is increased by 25%"
+hp = 9999
+damage = 5.0
+speed = 100.0
+knockback_amount = 125.0
+attack_size = 1.0
+
+[resource]
+script = ExtResource(1)
+id = "tornado"
+display_name = "Tornado"
+icon_path = "res://Textures/Items/Weapons/tornado.png"
+sprite_sheet_path = "res://assets/kalboWheelchair/spritesheets.png"
+sprite_region = Rect2i(48, 112, 16, 16)
+scene_path = "res://Player/Attack/tornado.tscn"
+levels = [SubResource(1), SubResource(2), SubResource(3), SubResource(4)]

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_data.gd" id=1]
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_level_data.gd" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource(2)
+level = 1
+description = "A single orb rotates around you and damages enemies"
+damage = 4.0
+orbit_speed = 2.6
+
+[sub_resource type="Resource" id=2]
+script = ExtResource(2)
+level = 2
+description = "Orb hit cooldown is reduced"
+damage = 5.0
+orbit_speed = 2.8
+
+[sub_resource type="Resource" id=3]
+script = ExtResource(2)
+level = 3
+description = "An additional orb rotates around you"
+damage = 6.0
+orbit_speed = 3.0
+
+[sub_resource type="Resource" id=4]
+script = ExtResource(2)
+level = 4
+description = "Another orb is added and hit cooldown is reduced"
+damage = 8.0
+orbit_speed = 3.2
+
+[resource]
+script = ExtResource(1)
+id = "willowhisp"
+display_name = "Will O Whisps"
+icon_path = "res://assets/kalboWheelchair/spark.png"
+sprite_sheet_path = "res://assets/kalboWheelchair/spritesheets.png"
+sprite_region = Rect2i(16, 128, 16, 16)
+scene_path = "res://Player/Attack/will_o_whisp_orb.tscn"
+levels = [SubResource(1), SubResource(2), SubResource(3), SubResource(4)]

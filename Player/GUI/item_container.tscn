@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://r8kt7ltt8dd1"]
+
+[ext_resource type="Script" path="res://Player/GUI/item_container.gd" id="2_n13ab"]
+
+[node name="ItemContainer" type="TextureRect"]
+custom_minimum_size = Vector2(16, 16)
+size = Vector2(16, 16)
+stretch_mode = 5
+script = ExtResource("2_n13ab")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+layout_mode = 0
+size = Vector2(16, 16)

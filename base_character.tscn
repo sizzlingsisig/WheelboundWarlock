@@ -106,6 +106,7 @@
 [ext_resource type="Texture2D" uid="uid://3qj13i8bucuw" path="res://assets/kalboArmor/standard/walk/up/7.png" id="96_lyfp0"]
 [ext_resource type="Texture2D" uid="uid://c556t868s2u7t" path="res://assets/kalboArmor/standard/walk/up/8.png" id="97_ep2nr"]
 [ext_resource type="Texture2D" uid="uid://btt26t0uj254u" path="res://assets/kalboArmor/standard/walk/up/9.png" id="98_2gre6"]
+[ext_resource type="Script" path="res://characters/base_character.gd" id="base_character_script"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e8euo"]
 animations = [{
@@ -589,26 +590,30 @@ animations = [{
 }]
 
 [node name="BaseCharacter" type="Node2D" unique_id=1651300779]
+script = ExtResource("base_character_script")
 
 [node name="kalbobase" type="AnimatedSprite2D" parent="." unique_id=191752401]
 visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e8euo")
-animation = &"attack_up"
-frame_progress = 0.8869883
+animation = &"special_left"
 
 [node name="kalbowheelchair" type="AnimatedSprite2D" parent="." unique_id=227159873]
 visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_g41a5")
-animation = &"walk_left"
-frame_progress = 0.010864196
+animation = &"walk_up"
+frame_progress = 0.30673277
 
 [node name="kalbomacho" type="AnimatedSprite2D" parent="." unique_id=256798680]
 visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e8euo")
-animation = &"special_up"
-frame_progress = 0.91066
+animation = &"special_right"
 
 [node name="kalboarmor" type="AnimatedSprite2D" parent="." unique_id=423994151]
+visible = false
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e8euo")
-animation = &"special_down"
-frame_progress = 1.0
+animation = &"attack_right"
+frame_progress = 0.9153176

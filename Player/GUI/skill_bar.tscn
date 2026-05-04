@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://xdl6hpba7elm" path="res://Player/GUI/attack_bar.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://Player/GUI/skill_bar_slot.tscn" id="2_slot_scene"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/icespear_slot.tres" id="3_slot_ice"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/tornado_slot.tres" id="4_slot_tornado"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/immolate_slot.tres" id="5_slot_immolate"]
+[ext_resource type="Resource" path="res://Player/GUI/skill_bar_slots/lightning_slot.tres" id="6_slot_lightning"]
+
+[node name="SkillBar" type="Control" unique_name_in_owner=true]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -85.0
+offset_right = -5.0
+offset_bottom = 85.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_script")
+slot_scene = ExtResource("2_slot_scene")
+slots = [ExtResource("3_slot_ice"), ExtResource("4_slot_tornado"), ExtResource("5_slot_immolate"), ExtResource("6_slot_lightning")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_name_in_owner=true]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -90.0
+offset_right = 12.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
