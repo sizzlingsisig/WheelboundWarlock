@@ -23,31 +23,43 @@ func on_spawn() -> void:
 	spawn_position = global_position
 	angle = global_position.direction_to(target)
 	rotation = angle.angle() + deg_to_rad(135)
-	match level:
-		1:
-			hp = 1
-			speed = 100.0
-			damage = 5.0
-			knockback_amount = 100.0
-			attack_size = 1.0 * (1 + player.spell_size)
-		2:
-			hp = 1
-			speed = 100.0
-			damage = 5.0
-			knockback_amount = 100.0
-			attack_size = 1.0 * (1 + player.spell_size)
-		3:
-			hp = 2
-			speed = 100.0
-			damage = 8.0
-			knockback_amount = 100.0
-			attack_size = 1.0 * (1 + player.spell_size)
-		4:
-			hp = 2
-			speed = 100.0
-			damage = 8.0
-			knockback_amount = 100.0
-			attack_size = 1.0 * (1 + player.spell_size)
+	var spell_size = 0.0
+	if player != null:
+		spell_size = player.spell_size
+	var level_data = UpgradeDb.get_weapon_level_data("icespear", level)
+	if level_data != null:
+		hp = level_data.hp
+		speed = level_data.speed
+		damage = level_data.damage
+		knockback_amount = level_data.knockback_amount
+		var base_size = level_data.attack_size if level_data.attack_size > 0.0 else 1.0
+		attack_size = base_size * (1 + spell_size)
+	else:
+		match level:
+			1:
+				hp = 1
+				speed = 100.0
+				damage = 5.0
+				knockback_amount = 100.0
+				attack_size = 1.0 * (1 + spell_size)
+			2:
+				hp = 1
+				speed = 100.0
+				damage = 5.0
+				knockback_amount = 100.0
+				attack_size = 1.0 * (1 + spell_size)
+			3:
+				hp = 2
+				speed = 100.0
+				damage = 8.0
+				knockback_amount = 100.0
+				attack_size = 1.0 * (1 + spell_size)
+			4:
+				hp = 2
+				speed = 100.0
+				damage = 8.0
+				knockback_amount = 100.0
+				attack_size = 1.0 * (1 + spell_size)
 
 	var tween = create_tween()
 	scale = Vector2(0.1, 0.1)

@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_data.gd" id=1]
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_level_data.gd" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource(2)
+level = 1
+description = "Lightning strikes and chains to 1 nearby enemy"
+hp = 1
+damage = 5.0
+knockback_amount = 80.0
+attack_size = 1.0
+chain_count = 1
+chain_range = 150.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource(2)
+level = 2
+description = "Lightning chains to 1 additional enemy"
+hp = 1
+damage = 5.0
+knockback_amount = 80.0
+attack_size = 1.0
+chain_count = 2
+chain_range = 150.0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource(2)
+level = 3
+description = "Lightning damage increased by 3"
+hp = 1
+damage = 8.0
+knockback_amount = 80.0
+attack_size = 1.0
+chain_count = 2
+chain_range = 150.0
+
+[sub_resource type="Resource" id=4]
+script = ExtResource(2)
+level = 4
+description = "Lightning chains to 1 additional enemy"
+hp = 1
+damage = 8.0
+knockback_amount = 80.0
+attack_size = 1.0
+chain_count = 3
+chain_range = 150.0
+
+[resource]
+script = ExtResource(1)
+id = "lightning"
+display_name = "Lightning"
+icon_path = "res://assets/kalboWheelchair/lightningicon.png"
+sprite_sheet_path = "res://assets/kalboWheelchair/spritesheets.png"
+sprite_region = Rect2i(0, 16, 16, 16)
+scene_path = "res://Player/Attack/lightning.tscn"
+levels = [SubResource(1), SubResource(2), SubResource(3), SubResource(4)]

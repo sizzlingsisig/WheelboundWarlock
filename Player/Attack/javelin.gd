@@ -34,39 +34,56 @@ func _ready():
 
 func update_javelin():
 	level = player.javelin_level
-	match level:
-		1:
-			hp = 9999
-			speed = 200.0
-			damage = 10
-			knockback_amount = 100
-			paths = 1
-			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
-		2:
-			hp = 9999
-			speed = 200.0
-			damage = 10
-			knockback_amount = 100
-			paths = 2
-			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
-		3:
-			hp = 9999
-			speed = 200.0
-			damage = 10
-			knockback_amount = 100
-			paths = 3
-			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
-		4:
-			hp = 9999
-			speed = 200.0
-			damage = 15
-			knockback_amount = 120
-			paths = 3
-			attack_size = 1.0 * (1 + player.spell_size)
-			attack_speed = 5.0 * (1-player.spell_cooldown)
+	var spell_size = 0.0
+	var spell_cooldown = 0.0
+	if player != null:
+		spell_size = player.spell_size
+		spell_cooldown = player.spell_cooldown
+	var level_data = UpgradeDb.get_weapon_level_data("javelin", level)
+	if level_data != null:
+		hp = level_data.hp
+		speed = level_data.speed
+		damage = level_data.damage
+		knockback_amount = level_data.knockback_amount
+		paths = level_data.paths
+		var base_size = level_data.attack_size if level_data.attack_size > 0.0 else 1.0
+		attack_size = base_size * (1 + spell_size)
+		var base_speed = level_data.attack_speed if level_data.attack_speed > 0.0 else 5.0
+		attack_speed = base_speed * (1 - spell_cooldown)
+	else:
+		match level:
+			1:
+				hp = 9999
+				speed = 200.0
+				damage = 10
+				knockback_amount = 100
+				paths = 1
+				attack_size = 1.0 * (1 + spell_size)
+				attack_speed = 5.0 * (1-spell_cooldown)
+			2:
+				hp = 9999
+				speed = 200.0
+				damage = 10
+				knockback_amount = 100
+				paths = 2
+				attack_size = 1.0 * (1 + spell_size)
+				attack_speed = 5.0 * (1-spell_cooldown)
+			3:
+				hp = 9999
+				speed = 200.0
+				damage = 10
+				knockback_amount = 100
+				paths = 3
+				attack_size = 1.0 * (1 + spell_size)
+				attack_speed = 5.0 * (1-spell_cooldown)
+			4:
+				hp = 9999
+				speed = 200.0
+				damage = 15
+				knockback_amount = 120
+				paths = 3
+				attack_size = 1.0 * (1 + spell_size)
+				attack_speed = 5.0 * (1-spell_cooldown)
 			
 	
 	scale = Vector2(1.0,1.0) * attack_size
@@ -87,15 +104,38 @@ func _physics_process(delta):
 func add_paths():
 	snd_attack.play()
 	emit_signal("remove_from_array",self)
-	target_array.clear()
-	var counter = 0
-	while counter < paths:
-		var new_path = player.get_random_target()
-		target_array.append(new_path)
-		counter += 1
+	target_array = _get_closest_targets(paths)
+	if target_array.is_empty():
+		target_array.append(player.get_random_target())
 	enable_attack(true)
 	target = target_array[0]
 	process_path()
+
+func _get_closest_targets(max_count: int) -> Array:
+	var results: Array = []
+	if player == null:
+		return results
+	var candidates = []
+	for enemy in player.enemy_close:
+		if not is_instance_valid(enemy):
+			continue
+		if enemy.is_queued_for_deletion():
+			continue
+		if not enemy.has_method("_on_hurt_box_hurt"):
+			continue
+		var distance = global_position.distance_to(enemy.global_position)
+		candidates.append({
+			"enemy": enemy,
+			"distance": distance
+		})
+	if candidates.is_empty():
+		return results
+	candidates.sort_custom(func(a, b): return a["distance"] < b["distance"])
+	for entry in candidates:
+		results.append(entry["enemy"].global_position)
+		if results.size() >= max_count:
+			break
+	return results
 
 func process_path():
 	angle = global_position.direction_to(target)

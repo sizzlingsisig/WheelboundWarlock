@@ -15,16 +15,24 @@ func _ready() -> void:
 	connect("selected_upgrade", Callable(player, "upgrade_character"))
 	if item == "":
 		item = "food"
-	lblName.text = UpgradeDb.UPGRADES[item]["displayname"]
-	lblDescription.text = UpgradeDb.UPGRADES[item]["details"]
-	lblLevel.text = UpgradeDb.UPGRADES[item]["level"]
+	var upgrade_data = UpgradeDb.get_upgrade_data(item)
+	if upgrade_data.is_empty():
+		return
+	lblName.text = upgrade_data["displayname"]
+	lblDescription.text = upgrade_data["details"]
+	lblLevel.text = upgrade_data["level"]
 	_set_icon()
 	_set_child_mouse_filter(self)
 
 func _set_icon() -> void:
-	var upgrade_data = UpgradeDb.UPGRADES[item]
+	var upgrade_data = UpgradeDb.get_upgrade_data(item)
+	if upgrade_data.is_empty():
+		return
 	if upgrade_data.has("sprite_region") and upgrade_data.has("sprite_sheet"):
-		var sheet = load(upgrade_data["sprite_sheet"])
+		var sheet_path = upgrade_data.get("sprite_sheet", "")
+		if sheet_path.is_empty() or sheet_path == "res://":
+			return
+		var sheet = load(sheet_path)
 		if sheet:
 			var atlas = AtlasTexture.new()
 			atlas.atlas = sheet
@@ -32,9 +40,12 @@ func _set_icon() -> void:
 			itemIcon.texture = atlas
 			_fit_icon_to_frame(itemIcon, true)
 	elif upgrade_data.has("icon"):
-		var icon_path = upgrade_data["icon"]
-		itemIcon.texture = load(icon_path)
-		_fit_icon_to_frame(itemIcon, false, icon_path)
+		var icon_path = upgrade_data.get("icon", "")
+		if icon_path.is_empty() or icon_path == "res://":
+			return
+		if ResourceLoader.exists(icon_path):
+			itemIcon.texture = load(icon_path)
+			_fit_icon_to_frame(itemIcon, false, icon_path)
 
 func _fit_icon_to_frame(icon: TextureRect, is_spritesheet: bool = false, icon_path: String = "") -> void:
 	if icon.texture:

@@ -29,19 +29,27 @@ func update_hollow_purple(new_level):
 	var spell_size = 0.0
 	if player != null:
 		spell_size = player.spell_size
-	match level:
-		1:
-			damage = 4
-			attack_size = 1.4 * (1 + spell_size)
-		2:
-			damage = 5
-			attack_size = 1.6 * (1 + spell_size)
-		3:
-			damage = 7
-			attack_size = 1.8 * (1 + spell_size)
-		4:
-			damage = 9
-			attack_size = 2.0 * (1 + spell_size)
+	var level_data = UpgradeDb.get_weapon_level_data("hollowpurple", level)
+	if level_data != null:
+		damage = level_data.damage
+		var base_size = level_data.attack_size if level_data.attack_size > 0.0 else 1.0
+		attack_size = base_size * (1 + spell_size)
+		if level_data.hit_interval > 0.0:
+			hit_interval = level_data.hit_interval
+	else:
+		match level:
+			1:
+				damage = 4
+				attack_size = 1.4 * (1 + spell_size)
+			2:
+				damage = 5
+				attack_size = 1.6 * (1 + spell_size)
+			3:
+				damage = 7
+				attack_size = 1.8 * (1 + spell_size)
+			4:
+				damage = 9
+				attack_size = 2.0 * (1 + spell_size)
 	if collision and collision.shape is CircleShape2D:
 		collision.shape.radius = BASE_RADIUS * attack_size
 

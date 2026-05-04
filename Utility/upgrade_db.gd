@@ -1,5 +1,10 @@
 extends Node
 
+const WEAPON_RESOURCE_DIR = "res://Resources/Weapons"
+
+var _weapon_resources: Dictionary = {}
+var _resource_upgrades_cache: Dictionary = {}
+
 
 const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH = "res://Textures/Items/Weapons/"
@@ -507,3 +512,81 @@ const UPGRADES = {
 		"type": "item"
 	}
 }
+
+func _load_weapon_resources() -> void:
+	if _weapon_resources.size() > 0:
+		return
+	var dir = DirAccess.open(WEAPON_RESOURCE_DIR)
+	if dir == null:
+		return
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir():
+			var ext = file_name.get_extension()
+			if ext == "tres" or ext == "res":
+				var resource_path = WEAPON_RESOURCE_DIR + "/" + file_name
+				var resource = load(resource_path)
+				if resource is WeaponData and resource.id != "":
+					_weapon_resources[resource.id] = resource
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	_build_resource_upgrade_cache()
+
+func _build_resource_upgrade_cache() -> void:
+	_resource_upgrades_cache.clear()
+	for weapon_id in _weapon_resources:
+		var weapon: WeaponData = _weapon_resources[weapon_id]
+		if weapon == null or weapon.levels.is_empty():
+			continue
+		for level_data in weapon.levels:
+			if level_data == null:
+				continue
+			var level_num = level_data.level
+			if level_num <= 0:
+				continue
+			var key = "%s%d" % [weapon.id, level_num]
+			var prereq = level_data.prerequisites
+			if prereq.is_empty() and level_num > 1:
+				prereq = ["%s%d" % [weapon.id, level_num - 1]]
+			_resource_upgrades_cache[key] = {
+				"icon": weapon.icon_path,
+				"sprite_sheet": weapon.sprite_sheet_path,
+				"sprite_region": weapon.sprite_region,
+				"displayname": weapon.display_name,
+				"details": level_data.description,
+				"level": "Level: %d" % level_num,
+				"prerequisite": prereq,
+				"type": "weapon"
+			}
+
+func get_upgrade_ids() -> Array:
+	_load_weapon_resources()
+	var ids: Array = []
+	for id in UPGRADES:
+		ids.append(id)
+	for id in _resource_upgrades_cache:
+		if not ids.has(id):
+			ids.append(id)
+	return ids
+
+func get_upgrade_data(id: String) -> Dictionary:
+	_load_weapon_resources()
+	if _resource_upgrades_cache.has(id):
+		return _resource_upgrades_cache[id]
+	return UPGRADES.get(id, {})
+
+func get_weapon_resource(weapon_id: String) -> WeaponData:
+	_load_weapon_resources()
+	if _weapon_resources.has(weapon_id):
+		return _weapon_resources[weapon_id]
+	return null
+
+func get_weapon_level_data(weapon_id: String, level: int) -> WeaponLevelData:
+	var weapon = get_weapon_resource(weapon_id)
+	if weapon == null:
+		return null
+	for level_data in weapon.levels:
+		if level_data != null and level_data.level == level:
+			return level_data
+	return null

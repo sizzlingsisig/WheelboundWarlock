@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_data.gd" id=1]
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_level_data.gd" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource(2)
+level = 1
+description = "A magical javelin will follow you attacking enemies in a straight line"
+hp = 9999
+damage = 10.0
+speed = 200.0
+knockback_amount = 100.0
+paths = 1
+attack_size = 1.0
+attack_speed = 5.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource(2)
+level = 2
+description = "The javelin will now attack an additional enemy per attack"
+hp = 9999
+damage = 10.0
+speed = 200.0
+knockback_amount = 100.0
+paths = 2
+attack_size = 1.0
+attack_speed = 5.0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource(2)
+level = 3
+description = "The javelin will attack another additional enemy per attack"
+hp = 9999
+damage = 10.0
+speed = 200.0
+knockback_amount = 100.0
+paths = 3
+attack_size = 1.0
+attack_speed = 5.0
+
+[sub_resource type="Resource" id=4]
+script = ExtResource(2)
+level = 4
+description = "The javelin now does + 5 damage per attack and causes 20% additional knockback"
+hp = 9999
+damage = 15.0
+speed = 200.0
+knockback_amount = 120.0
+paths = 3
+attack_size = 1.0
+attack_speed = 5.0
+
+[resource]
+script = ExtResource(1)
+id = "javelin"
+display_name = "Javelin"
+icon_path = "res://Textures/Items/Weapons/javelin_3_new_attack.png"
+scene_path = "res://Player/Attack/javelin.tscn"
+levels = [SubResource(1), SubResource(2), SubResource(3), SubResource(4)]

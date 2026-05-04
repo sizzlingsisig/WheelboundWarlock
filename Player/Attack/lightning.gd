@@ -30,31 +30,43 @@ func on_spawn() -> void:
 	var spell_size = 0.0
 	if player != null:
 		spell_size = player.spell_size
-	match level:
-		1:
-			hp = 1
-			damage = 5.0
-			knockback_amount = 80.0
-			attack_size = 1.0 * (1 + spell_size)
-			chain_count = 1
-		2:
-			hp = 1
-			damage = 5.0
-			knockback_amount = 80.0
-			attack_size = 1.0 * (1 + spell_size)
-			chain_count = 2
-		3:
-			hp = 1
-			damage = 8.0
-			knockback_amount = 80.0
-			attack_size = 1.0 * (1 + spell_size)
-			chain_count = 2
-		4:
-			hp = 1
-			damage = 8.0
-			knockback_amount = 80.0
-			attack_size = 1.0 * (1 + spell_size)
-			chain_count = 3
+	var level_data = UpgradeDb.get_weapon_level_data("lightning", level)
+	if level_data != null:
+		hp = level_data.hp
+		damage = level_data.damage
+		knockback_amount = level_data.knockback_amount
+		var base_size = level_data.attack_size if level_data.attack_size > 0.0 else 1.0
+		attack_size = base_size * (1 + spell_size)
+		if level_data.chain_count > 0:
+			chain_count = level_data.chain_count
+		if level_data.chain_range > 0.0:
+			chain_range = level_data.chain_range
+	else:
+		match level:
+			1:
+				hp = 1
+				damage = 5.0
+				knockback_amount = 80.0
+				attack_size = 1.0 * (1 + spell_size)
+				chain_count = 1
+			2:
+				hp = 1
+				damage = 5.0
+				knockback_amount = 80.0
+				attack_size = 1.0 * (1 + spell_size)
+				chain_count = 2
+			3:
+				hp = 1
+				damage = 8.0
+				knockback_amount = 80.0
+				attack_size = 1.0 * (1 + spell_size)
+				chain_count = 2
+			4:
+				hp = 1
+				damage = 8.0
+				knockback_amount = 80.0
+				attack_size = 1.0 * (1 + spell_size)
+				chain_count = 3
 
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1) * attack_size, STRIKE_WINDUP).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)

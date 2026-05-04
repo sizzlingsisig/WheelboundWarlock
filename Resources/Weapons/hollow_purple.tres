@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_data.gd" id=1]
+[ext_resource type="Script" path="res://Resources/Weapons/weapon_level_data.gd" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource(2)
+level = 1
+description = "A persistent purple radius damages enemies around you"
+damage = 3.0
+attack_size = 1.0
+hit_interval = 0.35
+
+[sub_resource type="Resource" id=2]
+script = ExtResource(2)
+level = 2
+description = "Hollow Purple radius grows larger"
+damage = 4.0
+attack_size = 1.2
+hit_interval = 0.35
+
+[sub_resource type="Resource" id=3]
+script = ExtResource(2)
+level = 3
+description = "Hollow Purple damage and size increase"
+damage = 5.0
+attack_size = 1.4
+hit_interval = 0.35
+
+[sub_resource type="Resource" id=4]
+script = ExtResource(2)
+level = 4
+description = "Hollow Purple reaches maximum size and damage"
+damage = 7.0
+attack_size = 1.8
+hit_interval = 0.35
+
+[resource]
+script = ExtResource(1)
+id = "hollowpurple"
+display_name = "Hollow Purple"
+icon_path = "res://assets/kalboWheelchair/Dark-Bolt.png"
+sprite_sheet_path = "res://assets/kalboWheelchair/spritesheets.png"
+sprite_region = Rect2i(64, 64, 16, 16)
+scene_path = "res://Player/Attack/hollow_purple.tscn"
+levels = [SubResource(1), SubResource(2), SubResource(3), SubResource(4)]

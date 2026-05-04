@@ -26,19 +26,24 @@ func update_immolate(new_level):
 	if player != null:
 		spell_size = player.spell_size
 	
-	match level:
-		1:
-			damage = 3
-			duration = 5.0
-		2:
-			damage = 4
-			duration = 6.0
-		3:
-			damage = 5
-			duration = 7.0
-		4:
-			damage = 7
-			duration = 8.0
+	var level_data = UpgradeDb.get_weapon_level_data("immolate", level)
+	if level_data != null:
+		damage = level_data.damage
+		duration = level_data.duration
+	else:
+		match level:
+			1:
+				damage = 3
+				duration = 5.0
+			2:
+				damage = 4
+				duration = 6.0
+			3:
+				damage = 5
+				duration = 7.0
+			4:
+				damage = 7
+				duration = 8.0
 	
 	scale = Vector2(1.0, 1.0)
 

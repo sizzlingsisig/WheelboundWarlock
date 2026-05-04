@@ -29,19 +29,25 @@ func configure_orb(owner_player, index, total, new_level, new_hit_cooldown):
 	var spell_size = 0.0
 	if player != null:
 		spell_size = player.spell_size
-	match level:
-		1:
-			damage = 4
-			orbit_speed = 2.6
-		2:
-			damage = 5
-			orbit_speed = 2.8
-		3:
-			damage = 6
-			orbit_speed = 3.0
-		4:
-			damage = 8
-			orbit_speed = 3.2
+	var level_data = UpgradeDb.get_weapon_level_data("willowhisp", level)
+	if level_data != null:
+		damage = level_data.damage
+		if level_data.orbit_speed > 0.0:
+			orbit_speed = level_data.orbit_speed
+	else:
+		match level:
+			1:
+				damage = 4
+				orbit_speed = 2.6
+			2:
+				damage = 5
+				orbit_speed = 2.8
+			3:
+				damage = 6
+				orbit_speed = 3.0
+			4:
+				damage = 8
+				orbit_speed = 3.2
 	
 	orbit_radius = BASE_ORBIT_RADIUS * (1.0 + spell_size * 0.4)
 	if collision.shape is CircleShape2D:
