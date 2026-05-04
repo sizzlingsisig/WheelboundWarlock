@@ -1,5 +1,7 @@
 extends Node
 
+var click_indicator_scene = preload("res://Player/Effects/click_indicator.tscn")
+
 @onready var player = get_parent()
 
 func handle_input(event: InputEvent) -> void:
@@ -10,6 +12,7 @@ func handle_input(event: InputEvent) -> void:
 		var bounds = _get_world_bounds_rect()
 		player.movement_target = _clamp_to_bounds(mouse_pos, bounds)
 		player.is_moving = true
+		_spawn_click_indicator(mouse_pos)
 
 func process_movement() -> void:
 	if player.is_moving:
@@ -57,3 +60,8 @@ func _clamp_to_bounds(pos: Vector2, bounds: Rect2) -> Vector2:
 	var x = clamp(pos.x, bounds.position.x, bounds.position.x + bounds.size.x)
 	var y = clamp(pos.y, bounds.position.y, bounds.position.y + bounds.size.y)
 	return Vector2(x, y)
+
+func _spawn_click_indicator(pos: Vector2) -> void:
+	var indicator = click_indicator_scene.instantiate()
+	indicator.global_position = pos
+	get_tree().current_scene.add_child(indicator)

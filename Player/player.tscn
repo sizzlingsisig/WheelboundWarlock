@@ -34,6 +34,7 @@
 [ext_resource type="Script" path="res://Player/Components/player_progression.gd" id="25_progression"]
 [ext_resource type="Script" path="res://Player/Components/player_ui.gd" id="26_ui"]
 [ext_resource type="Script" path="res://Player/Components/player_boss_tracker.gd" id="27_boss_tracker"]
+[ext_resource type="Script" path="res://Player/Components/player_cursor.gd" id="28_cursor"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pfstq"]
 animations = [{
@@ -251,6 +252,9 @@ script = ExtResource("26_ui")
 
 [node name="BossTracker" type="Node" parent="."]
 script = ExtResource("27_boss_tracker")
+
+[node name="Cursor" type="Node" parent="."]
+script = ExtResource("28_cursor")
 
 [node name="GUILayer" type="CanvasLayer" parent="." unique_id=434183347]
 
